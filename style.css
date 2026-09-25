@@ -62,7 +62,10 @@ body { font-family: "Inter Tight", system-ui, sans-serif; color: var(--ink); -we
 .cover-l, .cover-p { width: 100%; height: 100%; }
 .cover-p { display: none; }
 #rotate-hint, #unrotate, #rotate-mini { display: none; }
-@media (orientation: portrait) and (max-width: 900px) {
+/* cover cue wording: "click" with a mouse, "tap" on touch screens */
+.cue-tap { display: none; }
+@media (pointer: coarse) { .cue-click { display: none; } .cue-tap { display: inline; } }
+@media (orientation: portrait) and (max-width: 900px) and (pointer: coarse) {
   #narrow-note { display: none !important; }
   body:not(.rotated):not(.hint-closed) #rotate-hint { display: flex; position: fixed; left: 10px; right: 10px; bottom: 14px; z-index: 10; align-items: center; gap: 10px;
     padding: 8px 8px 8px 16px; background: #FBF8F1; border: 1px solid #CFC4B1; border-radius: 16px; box-shadow: 0 6px 18px rgba(28,36,50,.12);

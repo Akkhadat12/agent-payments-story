@@ -67,7 +67,7 @@
         <g transform="translate(70 160) rotate(-14)"><g class="a pop" style="--d:900">
           <circle r="66" fill="none" stroke="var(--teal)" stroke-width="5"/><circle r="56" fill="none" stroke="var(--teal)" stroke-width="1.5"/>
           <text class="t-mono" y="10" font-size="30" text-anchor="middle" style="fill:var(--teal);letter-spacing:.14em">AGENT</text></g></g>
-        <text class="t-mono cue" x="0" y="282" font-size="15" text-anchor="middle">CLICK RECEIPT TO BEGIN</text>
+        <text class="t-mono cue" x="0" y="282" font-size="15" text-anchor="middle"><tspan class="cue-click">CLICK RECEIPT TO BEGIN</tspan><tspan class="cue-tap">TAP RECEIPT TO BEGIN</tspan></text>
         <rect class="ring" x="-232" y="-372" width="464" height="712" rx="14" fill="none" stroke="var(--teal)" stroke-width="4"/>
       </g></g></g>`;
     const land = svg(`
@@ -92,7 +92,7 @@
       ${rows.map((r, i) => `<g class="a" style="--d:${300 + i * 120}">
         <text class="t-label" x="-280" y="${-170 + i * 80}" font-size="40">${r}</text>
         <path d="M${-280 + r.length * 22 + 14} ${-180 + i * 80} H200" stroke="#BFB3A0" stroke-width="3" stroke-dasharray="2 10"/>
-        <text class="t-num" x="280" y="${-168 + i * 80}" font-size="50" text-anchor="end" style="fill:var(--copper)">?</text></g>`).join("")}
+        <text class="t-num" x="280" y="${-168 + i * 80}" font-size="50" text-anchor="end" style="fill:#8A4516">?</text></g>`).join("")}
       <path d="M-280 110 H280" stroke="var(--ink)" stroke-width="2" stroke-dasharray="7 8"/>
       <text class="t-mono" x="-280" y="170" font-size="28">PAID BY</text>
       <g transform="translate(140 200) rotate(-14)"><g class="a pop" style="--d:900">
@@ -199,7 +199,7 @@
       <path d="M200 ${base} H1330" stroke="var(--ink)" stroke-width="3"/>
       ${bars}
       ${note(110, 836, ["Accenture Consumer Pulse 2026 · 25,590 consumers · 16 countries (not Thailand)"], 900, "start", 16)}
-      ${note(110, 864, ["Other surveys vary widely by question, e.g. Worldpay Agentic Commerce Report (2025): 45% ready to let an agent complete a purchase"], 950, "start", 15)}
+      ${note(110, 864, ["Other surveys vary widely by question, e.g. Worldpay / Global Payments Agentic Commerce Report (8,000+ consumers): 45% ready to let an agent complete a purchase"], 950, "start", 15)}
       <g class="a" style="--d:1000"><rect x="1310" y="370" width="270" height="136" rx="8" fill="#FBF8F1" stroke="var(--ink)" stroke-width="1.5"/>
         <text class="t-mono" x="1330" y="402" font-size="15">US · GARTNER · JAN 2026</text>
         <text class="t-num" x="1328" y="454" font-size="44" style="fill:var(--copper)">≤11%</text>

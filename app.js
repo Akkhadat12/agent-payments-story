@@ -52,9 +52,9 @@
     }, lastLock);
   }
 
-  /* portrait phone: the cover is readable as is, but scenes are read in the rotated layout,
+  /* portrait phone (touch screen only; a narrow desktop window keeps the normal scaled stage): the cover is readable as is, but scenes are read in the rotated layout,
      so the first move into the story switches the rotated view on (same single input, one scene) */
-  const portraitPhone = window.matchMedia("(orientation: portrait) and (max-width: 900px)");
+  const portraitPhone = window.matchMedia("(orientation: portrait) and (max-width: 900px) and (pointer: coarse)");
   const body = document.body;
   function go(id) {
     if (locked || !els[id] || id === current) return;
@@ -77,7 +77,7 @@
     els.cover.className = "scene active";
     current = "cover"; locked = false;
     stage.dataset.current = "cover";
-    if (portraitPhone.matches) body.classList.remove("rotated"); /* back to the readable portrait cover */
+    body.classList.remove("rotated"); /* R always leaves the rotated view (whatever the orientation), so a portrait phone gets the readable portrait cover */
     if (document.activeElement && document.activeElement.blur) document.activeElement.blur();
   }
 
