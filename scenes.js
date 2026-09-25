@@ -309,7 +309,7 @@
       <text class="t-label a" style="--d:${100 + i * 40}" x="300" y="${y + 2}" font-size="20" text-anchor="end">${p}</text>
       <text class="t-small a" style="--d:${100 + i * 40}" x="300" y="${y + 23}" font-size="15" text-anchor="end">${sub}</text></g>`;
     }).join("");
-    const plate = (y, l1, l2, d) => `<g class="a" style="--d:${d}"><rect x="560" y="${y - 28}" width="480" height="56" rx="8" fill="#FBF8F1" stroke="var(--ink)" stroke-width="1.5"/>
+    const plate = (y, l1, l2, d) => `<g class="a" style="--d:${d}"><rect x="530" y="${y - 28}" width="540" height="56" rx="8" fill="#FBF8F1" stroke="var(--ink)" stroke-width="1.5"/>
       <text class="t-label" x="800" y="${y - 6}" font-size="15" text-anchor="middle">${esc(l1)}</text>
       <text class="t-small" x="800" y="${y + 16}" font-size="15" text-anchor="middle">${esc(l2)}</text></g>`;
     const gate = hit("s7", "Next: the machine-payment rail", `<g class="a drop" style="--d:350"><g class="lift">
@@ -328,7 +328,7 @@
       <text class="t-label a" style="--d:450" x="1430" y="742" font-size="18" text-anchor="middle">Merchants</text>
       ${gate}
       ${plate(py(4), "Mastercard & Amex among 60+ launch collaborators", "Google AP2 · Sep 2025 · not part of Visa’s Connect pilot", 450)}
-      ${plate(py(5), "Visa, Mastercard, Amex expressed support for the x402 Foundation", "card networks aren’t in the payment path · x402 pays mainly in USDC today", 500)}
+      ${plate(py(5), "Visa, Mastercard, Amex expressed support for the x402 Foundation", "card networks aren’t in the payment path · mainly USDC today", 500)}
       ${note(320, 810, ["Solid pipe: plugged into Visa’s Connect pilot (Apr 2026). Dashed: launch collaborator (AP2) or expressed support (x402) only.", "Drawn from announcements, not transaction data."], 550, "start", 15)}`,
       "How new agent-payment protocols connect to card networks");
   };
