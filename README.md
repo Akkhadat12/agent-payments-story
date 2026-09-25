@@ -4,7 +4,9 @@ Interactive 2D visual story (desktop-first) about AI-agent payments: value is mo
 
 **Live:** https://akkhadat12.github.io/agent-payments-story/
 
-Controls: click the highlighted object or press **Space** to advance one scene · **R** returns to the cover.
+Controls: click the highlighted object or press **Space** to advance one scene · **R** returns to the cover. Input is locked until the entering scene's animation settles (about 0.9–1.2 s); R works at any time.
+
+Phones in portrait show a readable rotate-to-landscape prompt with an optional rotated view (tap targets at least 44 px). Scene text remains small on phones; a computer or tablet is recommended.
 
 ## Asset provenance
 - All illustrations (receipt, card, storefronts, agents, bank, QR-like tile, charts) are original SVG drawn in code for this project.

@@ -68,6 +68,7 @@
           <circle r="66" fill="none" stroke="var(--teal)" stroke-width="5"/><circle r="56" fill="none" stroke="var(--teal)" stroke-width="1.5"/>
           <text class="t-mono" y="10" font-size="30" text-anchor="middle" style="fill:var(--teal);letter-spacing:.14em">AGENT</text></g></g>
         <text class="t-mono cue" x="0" y="282" font-size="15" text-anchor="middle">CLICK RECEIPT TO BEGIN</text>
+        <rect class="ring" x="-232" y="-372" width="464" height="712" rx="14" fill="none" stroke="var(--teal)" stroke-width="4"/>
       </g></g></g>`;
     return svg(`
       <text class="t-mono a" style="--d:0" x="112" y="268" font-size="17">AGENT PAYMENTS · SEP 2026</text>
@@ -139,9 +140,9 @@
         <text class="t-num" x="1088" y="316" font-size="60" style="fill:var(--copper)">“hundreds”</text>
         <text class="t-small" x="1090" y="348" font-size="17">Visa, Dec 2025  ·  under 1/40,000 of one dot</text>
         <path d="M1090 380 H1500" stroke="var(--line)" stroke-width="1.5"/>
-        <text class="t-mono" x="1090" y="418" font-size="14">AGENT VOLUMES DISCLOSED BY NETWORKS</text>
-        <text class="t-num" x="1088" y="478" font-size="52" style="fill:var(--ink)">None</text>
-        <text class="t-small" x="1090" y="506" font-size="17">as of Sep 2026</text></g>
+        <text class="t-mono" x="1090" y="418" font-size="14">NEWER AGENT FIGURES SINCE DEC 2025</text>
+        <text class="t-num" x="1088" y="474" font-size="44" style="fill:var(--ink)">None found</text>
+        <text class="t-small" x="1090" y="504" font-size="17">in our search of network reports · Sep 2026</text></g>
       <g class="a pop" style="--d:900">${lens}</g>
       <text class="t-small a" style="--d:900" x="1230" y="806" font-size="14" text-anchor="middle">Copper point still drawn far too large</text>`,
       "Scale: 72 billion Visa transactions versus hundreds of agent transactions");
@@ -165,7 +166,8 @@
       <text class="t-small" x="196" y="${base - full + 5}" font-size="15" text-anchor="end">100%</text>
       <path d="M200 ${base} H1330" stroke="var(--ink)" stroke-width="3"/>
       ${bars}
-      ${note(110, 842, ["Accenture Consumer Pulse 2026 · 25,590 consumers · 16 countries (not Thailand)"], 900, "start", 16)}
+      ${note(110, 836, ["Accenture Consumer Pulse 2026 · 25,590 consumers · 16 countries (not Thailand)"], 900, "start", 16)}
+      ${note(110, 864, ["Other surveys vary widely by question, e.g. Worldpay (Jul 2026): 45% ready to let an agent complete a purchase"], 950, "start", 15)}
       <g class="a" style="--d:1000"><rect x="1360" y="380" width="200" height="120" rx="8" fill="#FBF8F1" stroke="var(--ink)" stroke-width="1.5"/>
         <text class="t-mono" x="1378" y="410" font-size="12">US · GARTNER · JAN 2026</text>
         <text class="t-num" x="1378" y="458" font-size="40" style="fill:var(--copper)">≤11%</text>
@@ -173,7 +175,7 @@
       "Trust ladder: 74%, 32%, 9%");
   };
 
-  /* ---------- S4: fee stack ---------- */
+  /* ---------- S4: fee stack (network share from CRS; issuer/acquirer split illustrative) ---------- */
   S.s4 = () => {
     const tag = `<g class="a slide" style="--d:0;--sx:-40px">
       <path d="M150 300 H560 L660 450 L560 600 H150 Z" fill="#FBF8F1" stroke="var(--ink)" stroke-width="3" stroke-linejoin="round" filter="url(#soft)"/>
@@ -183,27 +185,34 @@
       <path d="M440 300 L480 300 L480 600 L440 600" fill="var(--copper)" opacity=".9"/>
       <text class="t-small" x="190" y="500" font-size="17">merchant pays a cut</text>
       <text class="t-small" x="190" y="524" font-size="17">on every sale</text></g>`;
-    const layers = [["Issuer", "interchange", 250, bank(0, 0, .9, "var(--paper)")], ["Network", "Visa · Mastercard", 90, ""], ["Acquirer / PSP", "Stripe · Adyen · …", 120, ""]];
-    let y = 200, stack = "";
-    layers.forEach(([n, s, h], i) => {
-      stack += `<g class="a growx" style="--d:${500 + i * 160}">
-        <rect x="960" y="${y}" width="360" height="${h - 8}" rx="6" fill="${["var(--ink)", "#4A5670", "var(--copper)"][i]}"/>
-        <text class="t-label" x="984" y="${y + 36}" font-size="24" style="fill:#FBF8F1">${n}</text>
-        <text class="t-small" x="984" y="${y + 60}" font-size="16" style="fill:#E9E1D2">${esc(s)}</text></g>`;
-      if (i === 0) stack += `<g class="a" style="--d:700">${bank(1256, y + 150, 1.1, "#FBF8F1")}</g>`;
-      y += h;
-    });
+    const X = 960, Wd = 360, top = 200;
+    const iss = 300, net = 28, acq = 124, g = 4; /* net = 0.14 / 2.35 of stack height (CRS base assessment) */
+    const yN = top + iss + g, yA = yN + net + g, bottom = yA + acq;
+    const stack = `
+      <g class="a growx" style="--d:300"><rect x="${X}" y="${top}" width="${Wd}" height="${iss}" rx="6" fill="var(--ink)"/>
+        <text class="t-label" x="${X + 24}" y="${top + 38}" font-size="24" style="fill:#FBF8F1">Issuer</text>
+        <text class="t-small" x="${X + 24}" y="${top + 64}" font-size="16" style="fill:#E9E1D2">interchange · largest share</text>
+        ${bank(X + 300, top + 240, 1.1, "#FBF8F1")}</g>
+      <g class="a growx" style="--d:380"><rect x="${X}" y="${yN}" width="${Wd}" height="${net}" rx="4" fill="#4A5670"/>
+        <text class="t-label" x="${X + 24}" y="${yN + 20}" font-size="15" style="fill:#FBF8F1">Network</text></g>
+      <g class="a growx" style="--d:460"><rect x="${X}" y="${yA}" width="${Wd}" height="${acq}" rx="6" fill="#8A4516"/>
+        <text class="t-label" x="${X + 24}" y="${yA + 38}" font-size="22" style="fill:#FBF8F1">Acquirer / PSP</text>
+        <text class="t-small" x="${X + 24}" y="${yA + 62}" font-size="16" style="fill:#FBF8F1">processing</text></g>`;
     const hitStack = hit("s5", "Next: the new layer above checkout", `<g class="lift">${stack}
-      <rect class="ring" x="946" y="186" width="388" height="${y - 186 + 6}" rx="10" fill="none" stroke="var(--copper)" stroke-width="2"/></g>`);
+      <rect class="ring" x="${X - 14}" y="${top - 14}" width="${Wd + 28}" height="${bottom - top + 28}" rx="10" fill="none" stroke="var(--copper)" stroke-width="2"/></g>`);
     return svg(`${head("Today’s toll: the card fee.", "WHERE THE CHECKOUT FEE GOES")}
       ${tag}
-      <path class="a draw" style="--d:400;--len:500" d="M480 300 C640 230 800 206 940 206 M480 600 C660 660 840 640 940 ${y - 6}" fill="none" stroke="var(--copper)" stroke-width="2" stroke-dasharray="6 6"/>
-      <g class="a pop" style="--d:300"><text class="t-num" x="800" y="470" font-size="76" text-anchor="middle" style="fill:var(--copper)">2.35%</text>
+      <path class="a" style="--d:250" d="M480 300 C640 230 800 ${top + 6} 940 ${top + 6} M480 600 C660 660 840 ${bottom - 6} 940 ${bottom - 6}" fill="none" stroke="var(--copper)" stroke-width="2" stroke-dasharray="6 6"/>
+      <g class="a pop" style="--d:150"><text class="t-num" x="800" y="470" font-size="76" text-anchor="middle" style="fill:var(--copper)">2.35%</text>
         <text class="t-small" x="800" y="506" font-size="16" text-anchor="middle">avg. US merchant fee</text>
         <text class="t-small" x="800" y="528" font-size="16" text-anchor="middle">Visa &amp; Mastercard · 2024</text></g>
       ${hitStack}
-      ${chip(1346, 200, "SPLIT ILLUSTRATIVE", "var(--verm)", 900)}
-      ${note(960, y + 40, ["Largest share: issuer interchange"], 1000, "start", 17)}`,
+      <g><rect x="${X}" y="140" width="360" height="36" rx="18" fill="#FBF8F1" stroke="var(--verm)" stroke-width="2"/>
+        <text class="t-mono" x="${X + 180}" y="164" font-size="15" text-anchor="middle" style="fill:var(--verm)">ISSUER / ACQUIRER SPLIT: ILLUSTRATIVE</text></g>
+      <g class="a" style="--d:500"><path d="M${X + Wd + 8} ${yN + net / 2} H${X + Wd + 30}" stroke="var(--ink)" stroke-width="2"/>
+        <text class="t-label" x="${X + Wd + 38}" y="${yN + 12}" font-size="17">≈ 0.1–0.2% of sale</text>
+        <text class="t-small" x="${X + Wd + 38}" y="${yN + 34}" font-size="14">network fee · drawn to scale</text></g>
+      ${note(X, bottom + 44, ["Largest share goes to the issuer; network ≈ 0.1–0.2%", "CRS R48216 (US, Oct 2024)"], 600, "start", 17)}`,
       "Card fee stack: issuer, network, acquirer");
   };
 
@@ -215,120 +224,133 @@
         kind === 1 ? `<path d="M60 118 H176 Q180 100 160 96 L126 88 L110 64 H72 Q62 64 62 76 Z" fill="var(--teal2)" stroke="var(--ink)" stroke-width="3" stroke-linejoin="round"/>` :
         `<path d="M80 118 H152 L146 70 H86 Z M90 70 Q116 40 142 70 M152 84 Q172 90 150 106" fill="#E9E1D2" stroke="var(--ink)" stroke-width="3" stroke-linejoin="round"/>`}
       <rect x="18" y="138" width="${sponsored ? 90 : 120}" height="10" rx="5" fill="#D8CFC0"/>
-      ${sponsored ? `<rect x="120" y="14" width="96" height="26" rx="13" fill="var(--copper)"/><text class="t-mono" x="168" y="32" font-size="12" text-anchor="middle" style="fill:#FBF8F1">SPONSORED</text>` : ""}</g>`;
-    const panel = hit("s6", "Next: who controls trust", `<g class="lift">
+      ${sponsored ? `<rect x="112" y="12" width="106" height="28" rx="14" fill="#8A4516"/><text class="t-mono" x="165" y="31" font-size="13" text-anchor="middle" style="fill:#FFFFFF">SPONSORED</text>` : ""}</g>`;
+    const panel = hit("s6", "Next: how card networks connect", `<g class="lift">
       <rect x="380" y="176" width="840" height="300" rx="18" fill="#FBF8F1" stroke="var(--ink)" stroke-width="3" filter="url(#soft)"/>
       <path d="M380 194 Q380 176 398 176 H1202 Q1220 176 1220 194 V236 H380 Z" fill="var(--teal)"/>
       <circle cx="418" cy="206" r="13" fill="var(--paper)"/><circle cx="418" cy="206" r="5" fill="var(--teal)"/>
       <text class="t-label" x="444" y="214" font-size="20" style="fill:#FBF8F1">AI answer</text>
       ${tile(410, 0, false)}${tile(685, 1, true)}${tile(960, 2, false)}
       <rect class="ring" x="368" y="164" width="864" height="324" rx="24" fill="none" stroke="var(--teal)" stroke-width="2"/></g>`);
-    const buy = `<g class="a slide" style="--d:500;--sx:470px;--sy:-236px">
+    const adCard = (x, y, r) => `<g transform="translate(${x} ${y}) rotate(${r})"><rect x="-44" y="-30" width="88" height="60" rx="6" fill="#FBF8F1" stroke="var(--ink)" stroke-width="2.5"/>
+      <text class="t-mono" x="0" y="7" font-size="18" text-anchor="middle" style="fill:#8A4516">AD</text></g>`;
+    const buy = `<g class="a slide" style="--d:350;--sx:470px;--sy:-236px">
       <rect x="258" y="676" width="124" height="44" rx="22" fill="var(--ink)"/>
       <text class="t-label" x="320" y="704" font-size="18" text-anchor="middle" style="fill:#FBF8F1">Checkout</text></g>`;
     return svg(`${head("The new toll sits above checkout.", "DISCOVERY CAPTURES ATTENTION AND AD MONEY")}
       <g class="a pop" style="--d:0">${panel}</g>
-      <path class="a draw" style="--d:300;--len:420" d="M300 590 C300 520 330 470 380 430" fill="none" stroke="var(--copper)" stroke-width="4" stroke-dasharray="2 10" stroke-linecap="round"/>
-      <g class="a" style="--d:800"><circle cx="300" cy="560" r="16" fill="var(--copper2)" stroke="var(--ink)" stroke-width="2.5"/><text class="t-num" x="300" y="567" font-size="18" text-anchor="middle">$</text></g>
+      <g class="a" style="--d:150">${adCard(190, 250, -6)}${adCard(214, 262, 3)}${adCard(236, 276, 9)}</g>
+      <text class="t-label a" style="--d:150" x="110" y="352" font-size="18">Advertisers</text>
+      <path class="a" style="--d:250" d="M288 290 H368" fill="none" stroke="var(--copper)" stroke-width="5" stroke-dasharray="2 10" stroke-linecap="round"/>
+      <path class="a" style="--d:450" d="M356 280 L372 290 L356 300" fill="none" stroke="var(--copper)" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+      ${note(110, 400, ["Ad money", "$1B annualized run rate", "all ChatGPT ads · Aug 2026"], 450, "start", 17)}
       <g class="a" style="--d:100">${shop(320, 650, 1.9)}</g>
-      <text class="t-label a" style="--d:200" x="320" y="770" font-size="20" text-anchor="middle">Merchant</text>
+      <text class="t-label a" style="--d:150" x="320" y="770" font-size="20" text-anchor="middle">Merchant</text>
       ${buy}
-      <path class="a draw" style="--d:700;--len:700" d="M400 698 C560 700 700 640 730 480" fill="none" stroke="var(--ink2)" stroke-width="2" stroke-dasharray="5 7"/>
-      ${note(460, 610, ["Mar 2026: checkout goes back to merchants", "OpenAI: merchants use their own checkout"], 1000, "start", 18)}
-      ${note(282, 470, ["Ad money", "$1B annualized run rate", "ChatGPT ads · Aug 2026"], 900, "end", 18)}
-      <g class="a" style="--d:600">
-        <rect x="1180" y="600" width="300" height="190" rx="10" fill="var(--ink)"/>
-        <rect x="1180" y="600" width="300" height="56" rx="10" fill="#4A5670"/><rect x="1180" y="646" width="300" height="10" fill="#4A5670"/>
-        <text class="t-label" x="1204" y="636" font-size="18" style="fill:#FBF8F1">Payment rails</text>
-        <text class="t-num" x="1204" y="716" font-size="44" style="fill:var(--copper2)">~2.35%</text>
-        <text class="t-small" x="1204" y="746" font-size="15" style="fill:#E9E1D2">US avg. card fee · 2024</text>
-        <text class="t-small" x="1204" y="768" font-size="15" style="fill:#E9E1D2">unchanged by agents so far</text></g>
-      <g class="a" style="--d:1100"><rect x="1250" y="500" width="300" height="66" rx="8" fill="none" stroke="var(--verm)" stroke-width="1.5" stroke-dasharray="4 4"/>
-        <text class="t-label" x="1266" y="527" font-size="15" style="fill:var(--verm)">Reported: 4% in-chat checkout fee</text>
-        <text class="t-small" x="1266" y="550" font-size="14">Shopify merchants · Jan 2026 · news report</text></g>`,
+      <path class="a" style="--d:400" d="M400 698 C560 700 700 640 730 480" fill="none" stroke="var(--ink2)" stroke-width="2" stroke-dasharray="5 7"/>
+      ${note(470, 748, ["Mar 2026: OpenAI shifted checkout", "back to merchants’ own sites"], 500, "start", 18)}
+      <g class="a" style="--d:550"><rect x="820" y="496" width="400" height="92" rx="8" fill="#FBF8F1" stroke="var(--verm)" stroke-width="1.5" stroke-dasharray="4 4"/>
+        <text class="t-label" x="836" y="522" font-size="15" style="fill:var(--verm)">Reported: 4% fee to OpenAI on in-chat checkout</text>
+        <text class="t-small" x="836" y="545" font-size="14">Shopify merchants · news report, Jan 2026</text>
+        <text class="t-small" x="836" y="566" font-size="14">before the Mar 2026 shift · may no longer apply</text></g>
+      <g class="a" style="--d:450">
+        <rect x="1250" y="620" width="260" height="170" rx="10" fill="var(--ink)"/>
+        <rect x="1250" y="620" width="260" height="52" rx="10" fill="#4A5670"/><rect x="1250" y="662" width="260" height="10" fill="#4A5670"/>
+        <text class="t-label" x="1272" y="654" font-size="18" style="fill:#FBF8F1">Payment rails</text>
+        <text class="t-num" x="1272" y="728" font-size="44" style="fill:var(--copper2)">~2.35%</text>
+        <text class="t-small" x="1272" y="756" font-size="15" style="fill:#E9E1D2">US avg. card fee · 2024</text>
+        <text class="t-small" x="1272" y="776" font-size="15" style="fill:#E9E1D2">Visa &amp; Mastercard</text></g>`,
       "Discovery layer above checkout captures ad money");
   };
 
-  /* ---------- S6: trust gate ---------- */
+  /* ---------- S6: how card networks connect to new protocols ---------- */
   S.s6 = () => {
-    const pipes = ["ACP", "AP2 / UCP", "TAP", "MPP", "x402"];
-    const py = i => 300 + i * 82;
-    const pipeSvg = pipes.map((p, i) => `<g>
-      <path class="a draw" style="--d:${200 + i * 80};--len:1100" d="M300 ${py(i)} H1300" stroke="#B9AD98" stroke-width="16" stroke-linecap="round"/>
-      <path class="a draw" style="--d:${260 + i * 80};--len:1100" d="M300 ${py(i)} H1300" stroke="#FBF8F1" stroke-width="8" stroke-linecap="round"/>
-      <text class="t-label a" style="--d:${200 + i * 80}" x="280" y="${py(i) + 7}" font-size="20" text-anchor="end">${p}</text></g>`).join("");
-    const gate = hit("s7", "Next: the machine-payment rail", `<g class="a drop" style="--d:700"><g class="lift">
-      <rect x="690" y="236" width="220" height="440" rx="12" fill="var(--ink)" filter="url(#soft)"/>
-      <rect x="712" y="258" width="176" height="44" rx="6" fill="#FBF8F1"/>
-      <text class="t-mono" x="800" y="286" font-size="13" text-anchor="middle">TRUST GATE</text>
-      ${["Visa", "Mastercard", "Amex"].map((b, i) => `<rect x="712" y="${330 + i * 62}" width="176" height="48" rx="6" fill="#2C364A" stroke="#56627A"/>
-        <text class="wm" x="800" y="${361 + i * 62}" font-size="20" text-anchor="middle" style="fill:#FBF8F1">${b}</text>`).join("")}
-      <text class="t-small" x="800" y="540" font-size="15" text-anchor="middle" style="fill:#E9E1D2">tokens</text>
-      <text class="t-small" x="800" y="564" font-size="15" text-anchor="middle" style="fill:#E9E1D2">agent ID</text>
-      <text class="t-small" x="800" y="588" font-size="15" text-anchor="middle" style="fill:#E9E1D2">disputes</text>
-      <rect class="ring" x="678" y="224" width="244" height="464" rx="16" fill="none" stroke="var(--copper)" stroke-width="2"/></g></g>`);
-    return svg(`${head("Incumbents build the trust gate.", "EVERY NEW PROTOCOL STILL PASSES A CARD-NETWORK CHECKPOINT")}
-      ${chip(1330, 92, "INTERPRETATION", "var(--verm)", 0)}
-      <g class="a" style="--d:100">${agent(140, 400)}${agent(200, 500, .8)}${agent(130, 590, .9)}</g>
-      <text class="t-label a" style="--d:100" x="160" y="690" font-size="20" text-anchor="middle">Agents</text>
+    const rows = [
+      ["ACP", "card tokens", "connect"], ["UCP", "card tokens", "connect"], ["MPP", "machine payments", "connect"], ["TAP", "Visa’s own · identity", "connect"],
+      ["AP2", "cards · stablecoins · bank", "partner"], ["x402", "USDC on-chain", "foundation"]];
+    const py = i => (i < 4 ? 292 + i * 76 : 630 + (i - 4) * 90);
+    const pipeSvg = rows.map(([p, sub, kind], i) => {
+      const y = py(i), outer = kind === "foundation" ? "#D9B79A" : "#B9AD98";
+      return `<g>
+      <path class="a draw" style="--d:${100 + i * 40};--len:1100" d="M320 ${y} H1300" stroke="${outer}" stroke-width="16" stroke-linecap="round"/>
+      <path class="a ${kind === "connect" ? "draw" : ""}" style="--d:${140 + i * 40};--len:1100" d="M320 ${y} H1300" stroke="#FBF8F1" stroke-width="8" stroke-linecap="${kind === "connect" ? "round" : "butt"}" ${kind === "connect" ? "" : 'stroke-dasharray="14 10"'}/>
+      <text class="t-label a" style="--d:${100 + i * 40}" x="300" y="${y + 2}" font-size="20" text-anchor="end">${p}</text>
+      <text class="t-small a" style="--d:${100 + i * 40}" x="300" y="${y + 21}" font-size="13" text-anchor="end">${sub}</text></g>`;
+    }).join("");
+    const plate = (y, l1, l2, d) => `<g class="a" style="--d:${d}"><rect x="560" y="${y - 28}" width="480" height="56" rx="8" fill="#FBF8F1" stroke="var(--ink)" stroke-width="1.5"/>
+      <text class="t-label" x="800" y="${y - 6}" font-size="15" text-anchor="middle">${esc(l1)}</text>
+      <text class="t-small" x="800" y="${y + 15}" font-size="13" text-anchor="middle">${esc(l2)}</text></g>`;
+    const gate = hit("s7", "Next: the machine-payment rail", `<g class="a drop" style="--d:350"><g class="lift">
+      <rect x="690" y="186" width="220" height="400" rx="12" fill="var(--ink)" filter="url(#soft)"/>
+      <text class="wm" x="800" y="216" font-size="19" text-anchor="middle" style="fill:#FBF8F1">Visa</text>
+      <text class="t-small" x="800" y="238" font-size="14" text-anchor="middle" style="fill:#E9E1D2">Intelligent Commerce</text>
+      <text class="t-small" x="800" y="256" font-size="14" text-anchor="middle" style="fill:#E9E1D2">Connect · pilot</text>
+      ${[0, 1, 2, 3].map(i => `<rect x="712" y="${py(i) - 10}" width="176" height="20" rx="4" fill="#2C364A"/><circle cx="800" cy="${py(i)}" r="5" fill="var(--copper2)"/>`).join("")}
+      <text class="t-small" x="800" y="572" font-size="13" text-anchor="middle" style="fill:#E9E1D2">tokens · agent ID</text>
+      <rect class="ring" x="678" y="174" width="244" height="424" rx="16" fill="none" stroke="var(--copper)" stroke-width="2"/></g></g>`);
+    return svg(`${head("Card networks are joining most new protocols.", "HOW EACH PROTOCOL CONNECTS TO VISA, MASTERCARD OR AMEX · AS OF APR 2026")}
+      <g class="a" style="--d:50">${agent(110, 360)}${agent(110, 500, .85)}${agent(110, 640, .9)}</g>
+      <text class="t-label a" style="--d:50" x="110" y="734" font-size="18" text-anchor="middle">Agents</text>
       ${pipeSvg}
-      <g class="a" style="--d:900">${shop(1420, 400, .9)}${shop(1470, 520, .8)}${shop(1410, 630, .85)}</g>
-      <text class="t-label a" style="--d:900" x="1440" y="720" font-size="20" text-anchor="middle">Merchants</text>
+      <g class="a" style="--d:450">${shop(1420, 370, .9)}${shop(1440, 510, .8)}${shop(1420, 650, .85)}</g>
+      <text class="t-label a" style="--d:450" x="1430" y="742" font-size="18" text-anchor="middle">Merchants</text>
       ${gate}
-      ${note(300, 760, ["Visa Intelligent Commerce Connect: TAP · MPP · ACP · UCP", "Pilot · Apr 2026"], 1000, "start", 17)}
-      ${note(930, 760, ["Visa, Mastercard, Amex among x402 Foundation backers", "Linux Foundation · Apr 2026"], 1050, "start", 17)}`,
-      "Protocols pass through a card-network trust gate");
+      ${plate(py(4), "Mastercard & Amex among 60+ launch collaborators", "Google AP2 · Sep 2025 · not part of Visa’s Connect pilot", 450)}
+      ${plate(py(5), "Visa, Mastercard, Amex back the x402 Foundation", "support & governance · money settles in USDC, not cards", 500)}
+      ${note(320, 810, ["Solid pipe: plugged into Visa’s Connect pilot (Apr 2026). Dashed: linked by partnership or governance only.", "Drawn from announcements, not transaction data."], 550, "start", 15)}`,
+      "How new agent-payment protocols connect to card networks");
   };
 
-  /* ---------- S7: two rails ---------- */
+  /* ---------- S7: two rails, x402 money as a range ---------- */
   S.s7 = () => {
     const rail = (y, d) => `<path class="a draw" style="--d:${d};--len:1300" d="M160 ${y} H1440" stroke="var(--ink)" stroke-width="5"/>
-      ${Array.from({ length: 26 }, (_, i) => `<path class="a" style="--d:${d + i * 12}" d="M${180 + i * 49} ${y - 12} V${y + 12}" stroke="var(--ink)" stroke-width="3"/>`).join("")}`;
-    const big = 1000, small = Math.max(big * 0.187861 / 44.121, 1);
+      ${Array.from({ length: 26 }, (_, i) => `<path class="a" style="--d:${d + i * 6}" d="M${180 + i * 49} ${y - 12} V${y + 12}" stroke="var(--ink)" stroke-width="3"/>`).join("")}`;
+    const big = 1000, up = big * 20.258746 / 44.121384, low = big * 0.187861 / 44.121384;
+    const bar = (y, w, fill, d, lx, l1, l2, c) => `<rect x="160" y="${y}" width="${w}" height="46" fill="${fill}" class="a growx" style="--d:${d}"/>
+      <text class="t-label a" x="${lx}" y="${y + 22}" font-size="22" style="--d:${d + 60};fill:${c}">${l1}</text>
+      <text class="t-small a" x="${lx}" y="${y + 42}" font-size="15" style="--d:${d + 60}">${l2}</text>`;
     const bars = hit("s8", "Next: who pays when an agent is wrong", `<g class="lift">
-      <rect x="160" y="560" width="${big}" height="54" fill="#BFB3A0" class="a growx" style="--d:600"/>
-      <text class="t-label a" style="--d:700" x="${160 + big + 18}" y="586" font-size="24">$44.1M</text>
-      <text class="t-small a" style="--d:700" x="${160 + big + 18}" y="610" font-size="15">settled via x402 on Base · 280 days</text>
-      <rect x="160" y="650" width="${small}" height="54" fill="var(--copper)" class="a" style="--d:900"/>
-      <text class="t-label a" style="--d:950" x="190" y="676" font-size="24" style="fill:var(--copper)">$0.19M</text>
-      <text class="t-small a" style="--d:950" x="190" y="700" font-size="15">provably reached named services</text>
-      <rect class="ring" x="146" y="546" width="1300" height="172" rx="10" fill="none" stroke="var(--copper)" stroke-width="2"/>
-      <rect x="146" y="546" width="1300" height="172" fill="transparent"/></g>`);
-    return svg(`${head("Machine payments: big counts, small money.", "TWO RAILS FOR AGENTS")}
-      ${rail(250, 100)}
-      <text class="t-label a" style="--d:200" x="160" y="222" font-size="22">Shopping → card tokens</text>
-      <g class="a slide" style="--d:500;--sx:-300px">${cart(1000, 214)}</g>
-      ${rail(420, 300)}
-      ${[0,1,2,3,4,5].map(i => `<g class="a slide" style="--d:${600 + i * 60};--sx:-200px"><rect x="${520 + i * 74}" y="400" width="58" height="26" rx="4" fill="var(--teal)"/><text class="t-mono" x="${549 + i * 74}" y="418" font-size="12" text-anchor="middle" style="fill:#FBF8F1">402</text></g>`).join("")}
-      <text class="t-label a" style="--d:400" x="160" y="392" font-size="22">APIs &amp; data → HTTP 402 · stablecoins</text>
-      <g class="a" style="--d:500"><rect x="1130" y="328" width="310" height="62" rx="8" fill="#FBF8F1" stroke="var(--ink)" stroke-width="1.5"/>
-        <text class="t-label" x="1148" y="354" font-size="15">Coinbase claim via media · Aug 2026</text>
-        <text class="t-small" x="1148" y="376" font-size="14">205M transactions · $53M</text></g>
+      ${bar(470, big, "#CFC4B1", 300, 160 + big + 18, "$44.1M", "settled via x402 on Base · 280 days", "var(--ink)")}
+      ${bar(546, up, "#5E9993", 380, 160 + up + 18, "up to $20.3M", "upper bound: not provably manufactured (45.9%)", "var(--teal)")}
+      ${bar(622, Math.max(low, 3), "var(--copper)", 460, 190, "at least $0.19M", "lower bound: provably reached named services", "#8A4516")}
+      <rect class="ring" x="146" y="456" width="1300" height="228" rx="10" fill="none" stroke="var(--copper)" stroke-width="2"/>
+      <rect x="146" y="456" width="1300" height="228" fill="transparent"/></g>`);
+    return svg(`${head("Machine payments: big counts, uncertain money.", "TWO RAILS FOR AGENTS")}
+      ${rail(230, 50)}
+      <text class="t-label a" style="--d:100" x="160" y="202" font-size="22">Shopping → card tokens</text>
+      <g class="a slide" style="--d:250;--sx:-300px">${cart(1000, 194)}</g>
+      ${rail(380, 150)}
+      <text class="t-label a" style="--d:200" x="160" y="352" font-size="22">APIs &amp; data → HTTP 402 · stablecoins</text>
+      ${[0, 1, 2, 3, 4, 5].map(i => `<g class="a slide" style="--d:${300 + i * 30};--sx:-200px"><rect x="${520 + i * 74}" y="360" width="58" height="26" rx="4" fill="var(--teal)"/><text class="t-mono" x="${549 + i * 74}" y="378" font-size="12" text-anchor="middle" style="fill:#FBF8F1">402</text></g>`).join("")}
+      <g class="a" style="--d:250"><rect x="1130" y="286" width="310" height="62" rx="8" fill="#FBF8F1" stroke="var(--ink)" stroke-width="1.5"/>
+        <text class="t-label" x="1148" y="312" font-size="15">Coinbase claim via media · Aug 2026</text>
+        <text class="t-small" x="1148" y="334" font-size="14">205M transactions · $53M</text></g>
       ${bars}
-      ${note(160, 790, ["Ling et al., arXiv preprint, Jul 2026 · not peer-reviewed · bars to scale"], 1100, "start", 16)}`,
-      "x402 settled value versus value provably reaching named services");
+      ${note(160, 736, ["Independent demand lies somewhere between the two bounds; on-chain data cannot say where."], 550, "start", 17)}
+      ${note(160, 790, ["Ling et al., arXiv 2607.12575 (Jul 2026) · formatted for ACM POMACS; publication not confirmed · bars to scale"], 600, "start", 15)}`,
+      "x402 settled value with lower and upper bounds of independent demand");
   };
 
   /* ---------- S8: liability gap ---------- */
   S.s8 = () => {
     const q = hit("s9", "Next: the conditional map", `<g class="a pop" style="--d:700"><g class="lift">
-      <circle cx="800" cy="470" r="92" fill="var(--verm)" filter="url(#soft)"/>
-      <text class="t-num" x="800" y="512" font-size="120" text-anchor="middle" style="fill:#FBF8F1">?</text>
-      <circle class="ring" cx="800" cy="470" r="104" fill="none" stroke="var(--verm)" stroke-width="2"/></g></g>`);
+      <circle cx="800" cy="440" r="80" fill="var(--verm)" filter="url(#soft)"/>
+      <text class="t-num" x="800" y="478" font-size="104" text-anchor="middle" style="fill:#FBF8F1">?</text>
+      <circle class="ring" cx="800" cy="440" r="92" fill="none" stroke="var(--verm)" stroke-width="2"/></g></g>`);
     const parties = [[330, 300, bag(0, 0, 1.3), "Shopper"], [1270, 300, shop(0, 0, 1.2), "Merchant"], [330, 660, bank(0, 0, 1.3), "Issuing bank"], [1270, 660, bubble(0, 0, 1.2), "AI platform"]];
     const ps = parties.map(([x, y, g, l], i) => `<g class="a" style="--d:${200 + i * 100}">
-      <path d="M${x} ${y} L800 470" stroke="var(--verm)" stroke-width="2" stroke-dasharray="6 7"/>
+      <path d="M${x} ${y} L800 440" stroke="var(--verm)" stroke-width="2" stroke-dasharray="6 7"/>
       <circle cx="${x}" cy="${y}" r="70" fill="#FBF8F1" stroke="var(--ink)" stroke-width="2"/>${g.replace(/translate\(0 0\)/, `translate(${x} ${y})`)}
       <text class="t-label" x="${x}" y="${y + 104}" font-size="21" text-anchor="middle">${l}</text></g>`).join("");
     return svg(`${head("Agent bought the wrong thing. Who pays?", "LIABILITY · STATUS SEP 2026")}
       <g class="a" style="--d:0"><g transform="translate(800 470) rotate(4)">
         <rect x="-150" y="-190" width="300" height="380" rx="4" fill="#FBF8F1" stroke="#D6CCBA" stroke-width="1.5" filter="url(#soft)"/>
         ${[0, 1, 2, 3, 4].map(i => `<rect x="-120" y="${-150 + i * 34}" width="${[200, 150, 180, 120, 160][i]}" height="10" rx="5" fill="#D8CFC0"/>`).join("")}
-        <g transform="translate(0 120) rotate(-10)"><rect x="-118" y="-30" width="236" height="60" rx="6" fill="none" stroke="var(--verm)" stroke-width="4"/>
+        <g transform="translate(0 142) rotate(-8)"><rect x="-118" y="-30" width="236" height="60" rx="6" fill="none" stroke="var(--verm)" stroke-width="4"/>
           <text class="t-mono" y="10" font-size="24" text-anchor="middle" style="fill:var(--verm)">WRONG ITEM</text></g></g></g>
       ${ps}${q}
-      <text class="t-label a" style="--d:900" x="800" y="236" font-size="22" text-anchor="middle" style="fill:var(--verm)">No agent-specific liability shift yet</text>
-      ${note(110, 812, ["Amex: protects cardholders from registered-agent errors · Apr 2026"], 1000, "start", 15)}
+      <text class="t-label a" style="--d:900;fill:var(--verm)" x="800" y="236" font-size="22" text-anchor="middle">No agent-specific liability shift yet</text>
+      ${note(110, 812, ["Amex: pledge to protect eligible cardholders from registered-agent errors · announced Apr 2026"], 1000, "start", 15)}
       ${note(110, 840, ["6 banks: voluntary agentic-commerce principles · Sep 2026"], 1050, "start", 15)}`,
       "Liability gap between shopper, merchant, bank and AI platform");
   };
@@ -374,9 +396,9 @@
     for (let r = 0; r < 14; r++) for (let c = 0; c < 14; c++) { const on = (seed[r] >> (c % 8)) & 1 ^ (c > 7 ? (r & 1) : 0); const corner = (r < 4 && c < 4) || (r < 4 && c > 9) || (r > 9 && c < 4); if (on && !corner) qr += `<rect x="${c * 14}" y="${r * 14}" width="14" height="14"/>`; }
     const finder = (x, y) => `<rect x="${x}" y="${y}" width="56" height="56" fill="none" stroke="var(--ink)" stroke-width="8"/><rect x="${x + 16}" y="${y + 16}" width="24" height="24"/>`;
     const back = hit("s9", "Return to the conditional map", `<g class="lift">
-      <rect x="1300" y="770" width="220" height="56" rx="28" fill="var(--ink)"/>
-      <text class="t-label" x="1410" y="805" font-size="18" text-anchor="middle" style="fill:#FBF8F1">Back to the map</text>
-      <rect class="ring" x="1290" y="760" width="240" height="76" rx="38" fill="none" stroke="var(--copper)" stroke-width="2"/></g>`);
+      <rect x="1160" y="740" width="360" height="112" rx="56" fill="var(--ink)"/>
+      <text class="t-label" x="1340" y="807" font-size="28" text-anchor="middle" style="fill:#FBF8F1">Back to the map</text>
+      <rect class="ring" x="1148" y="728" width="384" height="136" rx="68" fill="none" stroke="var(--copper)" stroke-width="3"/></g>`);
     return svg(`${head("Thailand: still in the test lab.", "BRANCH · STATUS SEP 2026")}
       <g class="a" style="--d:100">
         <rect x="110" y="210" width="720" height="440" rx="18" fill="none" stroke="var(--ink)" stroke-width="2.5" stroke-dasharray="10 8"/>
@@ -388,8 +410,8 @@
         <rect x="-24" y="-24" width="244" height="244" rx="14" fill="#FBF8F1" stroke="var(--ink)" stroke-width="2"/>
         <g fill="var(--ink)">${qr}${finder(0, 0)}${finder(140, 0)}${finder(0, 140)}</g>
         <text class="t-label" x="98" y="262" font-size="22" text-anchor="middle">PromptPay</text></g></g>
-      ${note(1240, 300, ["Agent-payment policy", "none found (BOT, Sep 2026)"], 850, "start", 20)}
-      ${note(1240, 420, ["USDT / USDC", "trading pairs only, not payments", "Thai SEC · Mar 2025"], 950, "start", 20)}
+      ${note(1240, 300, ["Agent-payment policy", "No BOT policy found (as of Sep 2026)"], 850, "start", 20)}
+      ${note(1240, 420, ["USDT / USDC", "allowed on licensed exchanges & ICOs", "not approved for paying goods/services", "Thai SEC · Mar 2025"], 950, "start", 20)}
       ${note(110, 720, ["Generic QR pattern drawn for illustration; not a real code or logo"], 1000, "start", 15)}
       ${back}`, "Thailand branch");
   };

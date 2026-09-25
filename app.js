@@ -2,7 +2,17 @@
   const { order, branches, build } = window.SCENES;
   const stage = document.getElementById("stage");
   const reduce = window.matchMedia("(prefers-reduced-motion: reduce)");
-  const lockMs = () => (reduce.matches ? 220 : 1000);
+  /* input stays locked until every animated element of the entering scene has settled (R still works) */
+  const secs = v => v.split(",").map(t => parseFloat(t) * (t.trim().endsWith("ms") ? 1 : 1000));
+  const lockMs = el => {
+    if (reduce.matches) return 220;
+    let m = 700;
+    el.querySelectorAll(".a").forEach(a => {
+      const cs = getComputedStyle(a), d = secs(cs.animationDelay), u = secs(cs.animationDuration);
+      u.forEach((x, i) => { m = Math.max(m, (d[i] || d[0] || 0) + x); });
+    });
+    return Math.ceil(m) + 60;
+  };
   const els = {};
   Object.keys(build).forEach(id => {
     const d = document.createElement("section");
@@ -11,7 +21,7 @@
     stage.appendChild(d); els[id] = d;
   });
 
-  let current = "cover", locked = false, timer = null;
+  let current = "cover", locked = false, timer = null, lastLock = 0;
 
   function show(id, animate) {
     const prev = els[current], next = els[id];
@@ -26,11 +36,12 @@
     next.className = "scene active entering";
     current = id;
     stage.dataset.current = id;
+    lastLock = lockMs(next);
     timer = setTimeout(() => {
       prev.className = "scene";
       next.className = "scene active";
       locked = false; timer = null;
-    }, lockMs());
+    }, lastLock);
   }
 
   function go(id) {
@@ -80,7 +91,10 @@
     go(h.dataset.go);
   });
 
+  document.getElementById("rotate-btn").addEventListener("click", () => document.body.classList.add("rotated"));
+  document.getElementById("unrotate").addEventListener("click", () => document.body.classList.remove("rotated"));
+
   window.addEventListener("wheel", e => e.preventDefault(), { passive: false });
-  window.__story = { get current() { return current; }, get locked() { return locked; } };
+  window.__story = { get current() { return current; }, get locked() { return locked; }, get lastLock() { return lastLock; } };
   reset();
 })();
