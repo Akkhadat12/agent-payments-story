@@ -58,20 +58,20 @@ body { font-family: "Inter Tight", system-ui, sans-serif; color: var(--ink); -we
 #narrow-note { display: none; position: fixed; left: 0; right: 0; bottom: 18px; padding: 0 20px; text-align: center; line-height: 1.45; font: 500 14px "Inter Tight", sans-serif; color: #45413B; }
 @media (max-aspect-ratio: 4/3) { #narrow-note { display: block; } }
 
-/* portrait phone fallback: readable prompt + optional rotated view */
-#rotate, #unrotate { display: none; }
+/* portrait phone: cover stays the first view (scaled); small dismissible hint bar + optional rotated view */
+#rotate-hint, #unrotate { display: none; }
 @media (orientation: portrait) and (max-width: 900px) {
   #narrow-note { display: none !important; }
-  body:not(.rotated) #rotate { display: flex; position: fixed; inset: 0; z-index: 10; background: #F2ECE1; flex-direction: column; justify-content: center;
-    padding: 32px 28px; gap: 18px; font-family: "Inter Tight", sans-serif; color: #1C2432; }
-  #rotate h1 { font: 600 26px/1.2 "Fraunces", Georgia, serif; margin: 0; }
-  #rotate p { font-size: 17px; line-height: 1.5; margin: 0; color: #2E3645; }
-  #rotate .phone { width: 64px; height: 64px; }
-  #rotate button, #unrotate { font: 600 18px "Inter Tight", sans-serif; color: #FBF8F1; background: #1C2432; border: 0; border-radius: 28px; min-height: 56px; padding: 0 26px; cursor: pointer; }
-  #rotate button:focus-visible, #unrotate:focus-visible { outline: 3px solid #1D6B66; outline-offset: 3px; }
+  body:not(.rotated):not(.hint-closed) #rotate-hint { display: flex; position: fixed; left: 10px; right: 10px; bottom: 14px; z-index: 10; align-items: center; gap: 10px;
+    padding: 8px 8px 8px 16px; background: #FBF8F1; border: 1px solid #CFC4B1; border-radius: 16px; box-shadow: 0 6px 18px rgba(28,36,50,.12);
+    font-family: "Inter Tight", sans-serif; color: #1C2432; }
+  #rotate-hint p { margin: 0; flex: 1; font-size: 16px; line-height: 1.35; color: #2E3645; }
+  #rotate-hint button, #unrotate { font: 600 16px "Inter Tight", sans-serif; color: #FBF8F1; background: #1C2432; border: 0; border-radius: 22px; min-height: 44px; min-width: 44px; padding: 0 14px; cursor: pointer; }
+  #rotate-hint #hint-close { background: transparent; color: #1C2432; font-size: 20px; padding: 0; width: 44px; }
+  #rotate-hint button:focus-visible, #unrotate:focus-visible { outline: 3px solid #1D6B66; outline-offset: 2px; }
   body.rotated #app { inset: auto; top: 0; left: 100vw; width: 100vh; height: 100vw; transform-origin: top left; transform: rotate(90deg); }
   body.rotated .stage { width: min(100vh, calc(100vw * 16 / 9)); }
-  body.rotated #unrotate { display: block; position: fixed; z-index: 11; right: 8px; bottom: 8px; min-height: 48px; min-width: 48px; padding: 0 16px; font-size: 16px; }
+  body.rotated #unrotate { display: block; position: fixed; z-index: 11; right: 8px; bottom: 8px; min-height: 48px; min-width: 48px; padding: 0 16px; }
 }
 
 @media (prefers-reduced-motion: reduce) {

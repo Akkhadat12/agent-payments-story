@@ -21,12 +21,10 @@
 <main id="app" aria-live="polite">
   <div id="stage" class="stage"></div>
 </main>
-<div id="rotate" role="dialog" aria-labelledby="rotate-title">
-  <svg class="phone" viewBox="0 0 64 64" aria-hidden="true"><rect x="20" y="6" width="24" height="42" rx="4" fill="none" stroke="#1C2432" stroke-width="3"/><path d="M14 54 Q32 64 50 54" fill="none" stroke="#B25D22" stroke-width="3"/><path d="M44 50 L50 54 L46 60" fill="none" stroke="#B25D22" stroke-width="3"/></svg>
-  <h1 id="rotate-title">Who gets paid when the customer is an agent?</h1>
-  <p>This visual story is built for a wide screen. Please turn your phone sideways, or open it on a computer or tablet.</p>
-  <p>On a phone the text stays small even sideways; a larger screen reads best.</p>
-  <button type="button" id="rotate-btn">Show rotated view</button>
+<div id="rotate-hint" role="region" aria-label="Viewing tip">
+  <p>Best viewed sideways: turn your phone or use a larger screen.</p>
+  <button type="button" id="rotate-btn">Rotated view</button>
+  <button type="button" id="hint-close" aria-label="Dismiss tip">✕</button>
 </div>
 <button type="button" id="unrotate" aria-label="Exit rotated view">Exit</button>
 <div id="narrow-note" role="note">Designed for a desktop or landscape screen.<br>On this screen the story shrinks to fit; rotate or open on a computer for legible text.</div>

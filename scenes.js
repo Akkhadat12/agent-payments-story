@@ -13,13 +13,13 @@
   const hit = (next, aria, inner) =>
     `<g class="hit" data-go="${next}" role="button" tabindex="0" aria-label="${esc(aria)}">${inner}</g>`;
   const chip = (x, y, text, color = "var(--ink2)", d = 0) => {
-    const w = text.length * 8.4 + 26;
-    return `<g class="a" style="--d:${d}"><rect x="${x}" y="${y}" width="${w}" height="30" rx="15" fill="none" stroke="${color}" stroke-width="1.5"/>
-      <text class="t-mono" x="${x + w / 2}" y="${y + 20}" font-size="13" text-anchor="middle" style="fill:${color}">${esc(text)}</text></g>`;
+    const w = text.length * 9.8 + 28;
+    return `<g class="a" style="--d:${d}"><rect x="${x}" y="${y}" width="${w}" height="32" rx="16" fill="none" stroke="${color}" stroke-width="1.5"/>
+      <text class="t-mono" x="${x + w / 2}" y="${y + 21}" font-size="15" text-anchor="middle" style="fill:${color}">${esc(text)}</text></g>`;
   };
   const note = (x, y, lines, d = 0, anchor = "start", size = 17) =>
     `<g class="a" style="--d:${d}">${lines.map((l, i) =>
-      `<text class="${i === 0 ? "t-label" : "t-small"}" x="${x}" y="${y + i * (size + 7)}" font-size="${i === 0 ? size : size - 2}" text-anchor="${anchor}">${esc(l)}</text>`).join("")}</g>`;
+      `<text class="${i === 0 ? "t-label" : "t-small"}" x="${x}" y="${y + i * (size + 7)}" font-size="${i === 0 ? size : Math.max(size - 2, 14)}" text-anchor="${anchor}">${esc(l)}</text>`).join("")}</g>`;
 
   /* small original emblems */
   const bank = (x, y, s = 1, c = "var(--ink)") => `<g transform="translate(${x} ${y}) scale(${s})" fill="none" stroke="${c}" stroke-width="3" stroke-linejoin="round">
@@ -42,7 +42,7 @@
     <rect x="-120" y="-76" width="240" height="152" rx="14" fill="url(#cardInk)" filter="url(#soft)"/>
     <rect x="-92" y="-30" width="40" height="30" rx="5" fill="var(--copper2)"/><path d="M-92 -15 H-52 M-72 -30 V0" stroke="#8B5A2B" stroke-width="1.5"/>
     <text class="t-mono" x="-92" y="44" font-size="14" style="fill:#E9E1D2">•••• •••• •••• 4021</text>
-    <text class="t-mono" x="-92" y="62" font-size="10" style="fill:#B9B2A4">TOKENIZED</text></g>`;
+    <text class="t-mono" x="-92" y="62" font-size="14" style="fill:#B9B2A4">TOKENIZED</text></g>`;
 
   const cart = (x, y) => `<g transform="translate(${x} ${y})" stroke="var(--ink)" stroke-width="3" stroke-linejoin="round" fill="none">
     <path d="M-40 -26 H-28 L-18 10 H26 L34 -16 H-24" fill="var(--copper2)"/><circle cx="-12" cy="22" r="6" fill="var(--paper)"/><circle cx="20" cy="22" r="6" fill="var(--paper)"/></g>`;
@@ -131,7 +131,7 @@
       <circle cx="1268" cy="604" r="2.2" fill="var(--copper)"/>
       <circle cx="1268" cy="604" r="10" fill="none" stroke="var(--copper)" stroke-width="1.5"/>
       <circle class="ring" cx="1230" cy="640" r="122" fill="none" stroke="var(--copper)" stroke-width="2"/>
-      <text class="t-mono" x="1230" y="782" font-size="13" text-anchor="middle">ONE DOT, MAGNIFIED</text></g>`);
+      <text class="t-mono" x="1230" y="782" font-size="15" text-anchor="middle">ONE DOT, MAGNIFIED</text></g>`);
     return svg(`${head("Few have walked through.", "MEASURED USE · WHAT HAS BEEN DISCLOSED")}
       <g fill="#CBBFAA">${dots}</g>
       ${note(110, 700, ["Visa processed transactions: 72 billion", "Apr–Jun 2026 quarter  ·  1 dot ≈ 40 million"], 500)}
@@ -167,11 +167,11 @@
       <path d="M200 ${base} H1330" stroke="var(--ink)" stroke-width="3"/>
       ${bars}
       ${note(110, 836, ["Accenture Consumer Pulse 2026 · 25,590 consumers · 16 countries (not Thailand)"], 900, "start", 16)}
-      ${note(110, 864, ["Other surveys vary widely by question, e.g. Worldpay (Jul 2026): 45% ready to let an agent complete a purchase"], 950, "start", 15)}
-      <g class="a" style="--d:1000"><rect x="1360" y="380" width="200" height="120" rx="8" fill="#FBF8F1" stroke="var(--ink)" stroke-width="1.5"/>
-        <text class="t-mono" x="1378" y="410" font-size="12">US · GARTNER · JAN 2026</text>
-        <text class="t-num" x="1378" y="458" font-size="40" style="fill:var(--copper)">≤11%</text>
-        <text class="t-small" x="1378" y="484" font-size="14">would let AI decide</text></g>`,
+      ${note(110, 864, ["Other surveys vary widely by question, e.g. Worldpay Agentic Commerce Report: 45% ready to let an agent complete a purchase"], 950, "start", 15)}
+      <g class="a" style="--d:1000"><rect x="1310" y="370" width="270" height="136" rx="8" fill="#FBF8F1" stroke="var(--ink)" stroke-width="1.5"/>
+        <text class="t-mono" x="1330" y="402" font-size="15">US · GARTNER · JAN 2026</text>
+        <text class="t-num" x="1328" y="454" font-size="44" style="fill:var(--copper)">≤11%</text>
+        <text class="t-small" x="1330" y="486" font-size="17">would let AI decide</text></g>`,
       "Trust ladder: 74%, 32%, 9%");
   };
 
@@ -224,7 +224,7 @@
         kind === 1 ? `<path d="M60 118 H176 Q180 100 160 96 L126 88 L110 64 H72 Q62 64 62 76 Z" fill="var(--teal2)" stroke="var(--ink)" stroke-width="3" stroke-linejoin="round"/>` :
         `<path d="M80 118 H152 L146 70 H86 Z M90 70 Q116 40 142 70 M152 84 Q172 90 150 106" fill="#E9E1D2" stroke="var(--ink)" stroke-width="3" stroke-linejoin="round"/>`}
       <rect x="18" y="138" width="${sponsored ? 90 : 120}" height="10" rx="5" fill="#D8CFC0"/>
-      ${sponsored ? `<rect x="112" y="12" width="106" height="28" rx="14" fill="#8A4516"/><text class="t-mono" x="165" y="31" font-size="13" text-anchor="middle" style="fill:#FFFFFF">SPONSORED</text>` : ""}</g>`;
+      ${sponsored ? `<rect x="98" y="10" width="122" height="30" rx="15" fill="#8A4516"/><text class="t-mono" x="159" y="30" font-size="14" text-anchor="middle" style="fill:#FFFFFF">SPONSORED</text>` : ""}</g>`;
     const panel = hit("s6", "Next: how card networks connect", `<g class="lift">
       <rect x="380" y="176" width="840" height="300" rx="18" fill="#FBF8F1" stroke="var(--ink)" stroke-width="3" filter="url(#soft)"/>
       <path d="M380 194 Q380 176 398 176 H1202 Q1220 176 1220 194 V236 H380 Z" fill="var(--teal)"/>
@@ -248,7 +248,7 @@
       <text class="t-label a" style="--d:150" x="320" y="770" font-size="20" text-anchor="middle">Merchant</text>
       ${buy}
       <path class="a" style="--d:400" d="M400 698 C560 700 700 640 730 480" fill="none" stroke="var(--ink2)" stroke-width="2" stroke-dasharray="5 7"/>
-      ${note(470, 748, ["Mar 2026: OpenAI shifted checkout", "back to merchants’ own sites"], 500, "start", 18)}
+      ${note(470, 748, ["Mar 2026: OpenAI moved to allowing", "merchants to use their own checkout"], 500, "start", 18)}
       <g class="a" style="--d:550"><rect x="820" y="496" width="400" height="92" rx="8" fill="#FBF8F1" stroke="var(--verm)" stroke-width="1.5" stroke-dasharray="4 4"/>
         <text class="t-label" x="836" y="522" font-size="15" style="fill:var(--verm)">Reported: 4% fee to OpenAI on in-chat checkout</text>
         <text class="t-small" x="836" y="545" font-size="14">Shopify merchants · news report, Jan 2026</text>
@@ -267,7 +267,7 @@
   S.s6 = () => {
     const rows = [
       ["ACP", "card tokens", "connect"], ["UCP", "card tokens", "connect"], ["MPP", "machine payments", "connect"], ["TAP", "Visa’s own · identity", "connect"],
-      ["AP2", "cards · stablecoins · bank", "partner"], ["x402", "USDC on-chain", "foundation"]];
+      ["AP2", "cards · stablecoins · bank", "partner"], ["x402", "mainly USDC", "foundation"]];
     const py = i => (i < 4 ? 292 + i * 76 : 630 + (i - 4) * 90);
     const pipeSvg = rows.map(([p, sub, kind], i) => {
       const y = py(i), outer = kind === "foundation" ? "#D9B79A" : "#B9AD98";
@@ -275,29 +275,29 @@
       <path class="a draw" style="--d:${100 + i * 40};--len:1100" d="M320 ${y} H1300" stroke="${outer}" stroke-width="16" stroke-linecap="round"/>
       <path class="a ${kind === "connect" ? "draw" : ""}" style="--d:${140 + i * 40};--len:1100" d="M320 ${y} H1300" stroke="#FBF8F1" stroke-width="8" stroke-linecap="${kind === "connect" ? "round" : "butt"}" ${kind === "connect" ? "" : 'stroke-dasharray="14 10"'}/>
       <text class="t-label a" style="--d:${100 + i * 40}" x="300" y="${y + 2}" font-size="20" text-anchor="end">${p}</text>
-      <text class="t-small a" style="--d:${100 + i * 40}" x="300" y="${y + 21}" font-size="13" text-anchor="end">${sub}</text></g>`;
+      <text class="t-small a" style="--d:${100 + i * 40}" x="300" y="${y + 23}" font-size="15" text-anchor="end">${sub}</text></g>`;
     }).join("");
     const plate = (y, l1, l2, d) => `<g class="a" style="--d:${d}"><rect x="560" y="${y - 28}" width="480" height="56" rx="8" fill="#FBF8F1" stroke="var(--ink)" stroke-width="1.5"/>
       <text class="t-label" x="800" y="${y - 6}" font-size="15" text-anchor="middle">${esc(l1)}</text>
-      <text class="t-small" x="800" y="${y + 15}" font-size="13" text-anchor="middle">${esc(l2)}</text></g>`;
+      <text class="t-small" x="800" y="${y + 16}" font-size="15" text-anchor="middle">${esc(l2)}</text></g>`;
     const gate = hit("s7", "Next: the machine-payment rail", `<g class="a drop" style="--d:350"><g class="lift">
       <rect x="690" y="186" width="220" height="400" rx="12" fill="var(--ink)" filter="url(#soft)"/>
       <text class="wm" x="800" y="216" font-size="19" text-anchor="middle" style="fill:#FBF8F1">Visa</text>
       <text class="t-small" x="800" y="238" font-size="14" text-anchor="middle" style="fill:#E9E1D2">Intelligent Commerce</text>
       <text class="t-small" x="800" y="256" font-size="14" text-anchor="middle" style="fill:#E9E1D2">Connect · pilot</text>
       ${[0, 1, 2, 3].map(i => `<rect x="712" y="${py(i) - 10}" width="176" height="20" rx="4" fill="#2C364A"/><circle cx="800" cy="${py(i)}" r="5" fill="var(--copper2)"/>`).join("")}
-      <text class="t-small" x="800" y="572" font-size="13" text-anchor="middle" style="fill:#E9E1D2">tokens · agent ID</text>
+      <text class="t-small" x="800" y="572" font-size="15" text-anchor="middle" style="fill:#E9E1D2">tokens · agent ID</text>
       <rect class="ring" x="678" y="174" width="244" height="424" rx="16" fill="none" stroke="var(--copper)" stroke-width="2"/></g></g>`);
     return svg(`${head("Card networks are joining most new protocols.", "HOW EACH PROTOCOL CONNECTS TO VISA, MASTERCARD OR AMEX · AS OF APR 2026")}
-      <g class="a" style="--d:50">${agent(110, 360)}${agent(110, 500, .85)}${agent(110, 640, .9)}</g>
-      <text class="t-label a" style="--d:50" x="110" y="734" font-size="18" text-anchor="middle">Agents</text>
+      <g class="a" style="--d:50">${agent(66, 360)}${agent(66, 500, .85)}${agent(66, 640, .9)}</g>
+      <text class="t-label a" style="--d:50" x="66" y="734" font-size="18" text-anchor="middle">Agents</text>
       ${pipeSvg}
       <g class="a" style="--d:450">${shop(1420, 370, .9)}${shop(1440, 510, .8)}${shop(1420, 650, .85)}</g>
       <text class="t-label a" style="--d:450" x="1430" y="742" font-size="18" text-anchor="middle">Merchants</text>
       ${gate}
       ${plate(py(4), "Mastercard & Amex among 60+ launch collaborators", "Google AP2 · Sep 2025 · not part of Visa’s Connect pilot", 450)}
-      ${plate(py(5), "Visa, Mastercard, Amex back the x402 Foundation", "support & governance · money settles in USDC, not cards", 500)}
-      ${note(320, 810, ["Solid pipe: plugged into Visa’s Connect pilot (Apr 2026). Dashed: linked by partnership or governance only.", "Drawn from announcements, not transaction data."], 550, "start", 15)}`,
+      ${plate(py(5), "Visa, Mastercard, Amex expressed support for the x402 Foundation", "not a payment route · x402 payments mainly in USDC stablecoin today", 500)}
+      ${note(320, 810, ["Solid pipe: plugged into Visa’s Connect pilot (Apr 2026). Dashed: launch collaborator (AP2) or expressed support (x402) only.", "Drawn from announcements, not transaction data."], 550, "start", 15)}`,
       "How new agent-payment protocols connect to card networks");
   };
 
@@ -310,24 +310,24 @@
       <text class="t-label a" x="${lx}" y="${y + 22}" font-size="22" style="--d:${d + 60};fill:${c}">${l1}</text>
       <text class="t-small a" x="${lx}" y="${y + 42}" font-size="15" style="--d:${d + 60}">${l2}</text>`;
     const bars = hit("s8", "Next: who pays when an agent is wrong", `<g class="lift">
-      ${bar(470, big, "#CFC4B1", 300, 160 + big + 18, "$44.1M", "settled via x402 on Base · 280 days", "var(--ink)")}
-      ${bar(546, up, "#5E9993", 380, 160 + up + 18, "up to $20.3M", "upper bound: not provably manufactured (45.9%)", "var(--teal)")}
-      ${bar(622, Math.max(low, 3), "var(--copper)", 460, 190, "at least $0.19M", "lower bound: provably reached named services", "#8A4516")}
-      <rect class="ring" x="146" y="456" width="1300" height="228" rx="10" fill="none" stroke="var(--copper)" stroke-width="2"/>
-      <rect x="146" y="456" width="1300" height="228" fill="transparent"/></g>`);
+      ${bar(486, big, "#CFC4B1", 300, 160 + big + 18, "$44.1M", "settled via x402 on Base · 280 days", "var(--ink)")}
+      ${bar(562, up, "#5E9993", 380, 160 + up + 18, "up to $20.3M", "upper bound: not provably manufactured (45.9%)", "var(--teal)")}
+      ${bar(638, Math.max(low, 3), "var(--copper)", 460, 190, "at least $0.19M", "lower bound: provably reached named services", "#8A4516")}
+      <rect class="ring" x="146" y="472" width="1300" height="228" rx="10" fill="none" stroke="var(--copper)" stroke-width="2"/>
+      <rect x="146" y="472" width="1300" height="228" fill="transparent"/></g>`);
     return svg(`${head("Machine payments: big counts, uncertain money.", "TWO RAILS FOR AGENTS")}
-      ${rail(230, 50)}
-      <text class="t-label a" style="--d:100" x="160" y="202" font-size="22">Shopping → card tokens</text>
-      <g class="a slide" style="--d:250;--sx:-300px">${cart(1000, 194)}</g>
-      ${rail(380, 150)}
-      <text class="t-label a" style="--d:200" x="160" y="352" font-size="22">APIs &amp; data → HTTP 402 · stablecoins</text>
-      ${[0, 1, 2, 3, 4, 5].map(i => `<g class="a slide" style="--d:${300 + i * 30};--sx:-200px"><rect x="${520 + i * 74}" y="360" width="58" height="26" rx="4" fill="var(--teal)"/><text class="t-mono" x="${549 + i * 74}" y="378" font-size="12" text-anchor="middle" style="fill:#FBF8F1">402</text></g>`).join("")}
-      <g class="a" style="--d:250"><rect x="1130" y="286" width="310" height="62" rx="8" fill="#FBF8F1" stroke="var(--ink)" stroke-width="1.5"/>
-        <text class="t-label" x="1148" y="312" font-size="15">Coinbase claim via media · Aug 2026</text>
-        <text class="t-small" x="1148" y="334" font-size="14">205M transactions · $53M</text></g>
+      ${rail(256, 50)}
+      <text class="t-label a" style="--d:100" x="160" y="226" font-size="22">Shopping → card tokens</text>
+      <g class="a slide" style="--d:250;--sx:-300px">${cart(1000, 222)}</g>
+      ${rail(402, 150)}
+      <text class="t-label a" style="--d:200" x="160" y="374" font-size="22">APIs &amp; data → HTTP 402 · stablecoins</text>
+      ${[0, 1, 2, 3, 4, 5].map(i => `<g class="a slide" style="--d:${300 + i * 30};--sx:-200px"><rect x="${520 + i * 74}" y="384" width="62" height="30" rx="4" fill="var(--teal)"/><text class="t-mono" x="${551 + i * 74}" y="405" font-size="15" text-anchor="middle" style="fill:#FBF8F1">402</text></g>`).join("")}
+      <g class="a" style="--d:250"><rect x="1130" y="304" width="310" height="62" rx="8" fill="#FBF8F1" stroke="var(--ink)" stroke-width="1.5"/>
+        <text class="t-label" x="1148" y="330" font-size="15">Coinbase claim via media · Aug 2026</text>
+        <text class="t-small" x="1148" y="354" font-size="15">205M transactions · $53M</text></g>
       ${bars}
-      ${note(160, 736, ["Independent demand lies somewhere between the two bounds; on-chain data cannot say where."], 550, "start", 17)}
-      ${note(160, 790, ["Ling et al., arXiv 2607.12575 (Jul 2026) · formatted for ACM POMACS; publication not confirmed · bars to scale"], 600, "start", 15)}`,
+      ${note(160, 754, ["Independent demand lies somewhere between the two bounds; on-chain data cannot say where."], 550, "start", 17)}
+      ${note(160, 808, ["Ling et al., arXiv 2607.12575 (Jul 2026) · formatted for ACM POMACS; publication not confirmed · bars to scale"], 600, "start", 15)}`,
       "x402 settled value with lower and upper bounds of independent demand");
   };
 
@@ -374,7 +374,7 @@
     const th = hit("th", "Branch: Thailand", `<g class="a pop" style="--d:1100"><g class="lift"><g transform="translate(1400 690) rotate(-8)">
       <circle r="92" fill="#FBF8F1" stroke="var(--ink)" stroke-width="3" filter="url(#soft)"/><circle r="78" fill="none" stroke="var(--ink)" stroke-width="1.5" stroke-dasharray="3 5"/>
       <text class="t-num" y="12" font-size="48" text-anchor="middle">TH</text>
-      <text class="t-mono" y="46" font-size="13" text-anchor="middle">THAILAND</text>
+      <text class="t-mono" y="46" font-size="15" text-anchor="middle">THAILAND</text>
       <circle class="ring" r="104" fill="none" stroke="var(--copper)" stroke-width="2"/></g></g></g>`);
     return svg(`${head("Value follows discovery — if trust holds.", "CONDITIONAL MAP")}
       ${chip(1330, 92, "SCENARIO, NOT FORECAST", "var(--verm)", 0)}
@@ -382,7 +382,7 @@
       <g class="a" style="--d:950">
         <path d="M985 395 H1160" stroke="var(--verm)" stroke-width="6" stroke-linecap="round" stroke-dasharray="26 14"/>
         <rect x="1190" y="352" width="290" height="94" rx="8" fill="#FBF8F1" stroke="var(--verm)" stroke-width="2"/>
-        <text class="t-mono" x="1210" y="382" font-size="13" style="fill:var(--verm)">ONLY IF</text>
+        <text class="t-mono" x="1210" y="382" font-size="15" style="fill:var(--verm)">ONLY IF</text>
         <text class="t-label" x="1210" y="409" font-size="19">agents are trusted</text>
         <text class="t-label" x="1210" y="433" font-size="19">+ liability rules exist</text></g>
       ${note(170, 760, ["Rails keep their cut; the new margin sits in discovery"], 1000, "start", 19)}

@@ -79,6 +79,7 @@
 
   document.addEventListener("keydown", e => {
     if (editable(e.target)) return;
+    if (stage.getBoundingClientRect().width < 1) return; /* never advance a story that is not on screen */
     if (e.code === "Space" || e.key === " ") {
       e.preventDefault();
       if (e.repeat) return;
@@ -99,8 +100,10 @@
     go(h.dataset.go);
   });
 
-  document.getElementById("rotate-btn").addEventListener("click", () => document.body.classList.add("rotated"));
-  document.getElementById("unrotate").addEventListener("click", () => document.body.classList.remove("rotated"));
+  /* buttons in the phone hint bar: blur after use so Space/Enter keep driving the story, not the button */
+  document.getElementById("rotate-btn").addEventListener("click", e => { document.body.classList.add("rotated"); e.currentTarget.blur(); });
+  document.getElementById("hint-close").addEventListener("click", e => { document.body.classList.add("hint-closed"); e.currentTarget.blur(); });
+  document.getElementById("unrotate").addEventListener("click", e => { document.body.classList.remove("rotated"); e.currentTarget.blur(); });
 
   window.addEventListener("wheel", e => e.preventDefault(), { passive: false });
   window.__story = { get current() { return current; }, get locked() { return locked; }, get lastLock() { return lastLock; } };
