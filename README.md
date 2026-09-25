@@ -6,7 +6,7 @@ Interactive 2D visual story (desktop-first) about AI-agent payments: value is mo
 
 Controls: click the highlighted object or press **Space** to advance one scene · **R** returns to the cover. Input is locked until the entering scene's animation settles (about 0.9–1.2 s); R works at any time.
 
-Phones in portrait open on the scaled cover with a small, dismissible "best viewed sideways" bar and an optional rotated view (tap targets 48 px or larger when rotated). Scene text remains small on phones (about 6–45 px rotated or landscape, 3–20 px in unrotated portrait); a computer or tablet is recommended. Large copper numbers are about 3.9:1 contrast (large-text level); the other text colour pairs we checked are at least 4.5:1.
+Phones in portrait open on a portrait-layout cover (text 12–37 px). Tapping the receipt, or pressing Space/Enter, starts the story in a rotated landscape view; R or the Exit button returns to the portrait cover. Hint-bar and rotate buttons are 48 px or larger, and every tap target in the phone view measures at least 48 px. Scene text in the rotated view is about 6–45 px, so a computer or tablet reads best. The large copper numbers are about 3.9:1 contrast: large-text level on desktop; in the phone rotated view they render at about 19–37 px bold. The other text colour pairs we checked are at least 4.5:1.
 
 ## Asset provenance
 - All illustrations (receipt, card, storefronts, agents, bank, QR-like tile, charts) are original SVG drawn in code for this project.

@@ -52,8 +52,13 @@
     }, lastLock);
   }
 
+  /* portrait phone: the cover is readable as is, but scenes are read in the rotated layout,
+     so the first move into the story switches the rotated view on (same single input, one scene) */
+  const portraitPhone = window.matchMedia("(orientation: portrait) and (max-width: 900px)");
+  const body = document.body;
   function go(id) {
     if (locked || !els[id] || id === current) return;
+    if (portraitPhone.matches && !body.classList.contains("rotated")) body.classList.add("rotated");
     show(id, true);
     stage.dataset.current = id;
   }
@@ -72,6 +77,7 @@
     els.cover.className = "scene active";
     current = "cover"; locked = false;
     stage.dataset.current = "cover";
+    if (portraitPhone.matches) body.classList.remove("rotated"); /* back to the readable portrait cover */
     if (document.activeElement && document.activeElement.blur) document.activeElement.blur();
   }
 
@@ -103,7 +109,10 @@
   /* buttons in the phone hint bar: blur after use so Space/Enter keep driving the story, not the button */
   document.getElementById("rotate-btn").addEventListener("click", e => { document.body.classList.add("rotated"); e.currentTarget.blur(); });
   document.getElementById("hint-close").addEventListener("click", e => { document.body.classList.add("hint-closed"); e.currentTarget.blur(); });
-  document.getElementById("unrotate").addEventListener("click", e => { document.body.classList.remove("rotated"); e.currentTarget.blur(); });
+  document.getElementById("unrotate").addEventListener("click", e => { e.currentTarget.blur(); body.classList.remove("rotated"); reset(); });
+  /* phone turned to portrait in the middle of the story: keep scenes in the rotated layout */
+  portraitPhone.addEventListener("change", () => { if (portraitPhone.matches && current !== "cover") body.classList.add("rotated"); });
+  document.getElementById("rotate-mini").addEventListener("click", e => { body.classList.add("rotated"); e.currentTarget.blur(); });
 
   window.addEventListener("wheel", e => e.preventDefault(), { passive: false });
   window.__story = { get current() { return current; }, get locked() { return locked; }, get lastLock() { return lastLock; } };

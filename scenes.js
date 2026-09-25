@@ -61,7 +61,7 @@
         ${rows.map((r, i) => `<g class="a" style="--d:${300 + i * 120}">
           <text class="t-label" x="-170" y="${-180 + i * 62}" font-size="24">${r}</text>
           <path d="M${-170 + r.length * 13 + 10} ${-186 + i * 62} H110" stroke="#BFB3A0" stroke-width="2" stroke-dasharray="2 7"/>
-          <text class="t-num" x="170" y="${-180 + i * 62}" font-size="30" text-anchor="end" style="fill:var(--copper)">?</text></g>`).join("")}
+          <text class="t-num" x="170" y="${-180 + i * 62}" font-size="30" text-anchor="end" style="fill:#8A4516">?</text></g>`).join("")}
         <path d="M-170 70 H170" stroke="var(--ink)" stroke-width="1.5" stroke-dasharray="5 6"/>
         <text class="t-mono" x="-170" y="114" font-size="16">PAID BY</text>
         <g transform="translate(70 160) rotate(-14)"><g class="a pop" style="--d:900">
@@ -70,13 +70,45 @@
         <text class="t-mono cue" x="0" y="282" font-size="15" text-anchor="middle">CLICK RECEIPT TO BEGIN</text>
         <rect class="ring" x="-232" y="-372" width="464" height="712" rx="14" fill="none" stroke="var(--teal)" stroke-width="4"/>
       </g></g></g>`;
-    return svg(`
+    const land = svg(`
       <text class="t-mono a" style="--d:0" x="112" y="268" font-size="17">AGENT PAYMENTS · SEP 2026</text>
       <text class="t-display a" style="--d:60" x="106" y="372" font-size="84">Who gets paid</text>
       <text class="t-display a" style="--d:120" x="106" y="468" font-size="84">when the customer</text>
       <text class="t-display a" style="--d:180" x="106" y="564" font-size="84">is an <tspan style="fill:var(--copper)">agent?</tspan></text>
       <text class="t-small a" style="--d:260" x="112" y="628" font-size="24">Value, fees and trust in AI-agent commerce</text>
       ${hit("s1", "Begin: open the receipt", receipt)}`, "Cover: Who gets paid when the customer is an agent?");
+    return `<div class="cover-l">${land}</div><div class="cover-p">${coverPortrait(rows)}</div>`;
+  };
+
+  /* portrait-phone cover (shown only on narrow portrait screens): same content, laid out tall with large labels.
+     viewBox 900x1500; at a 390px-wide phone 1 unit = 0.433px, so the smallest text (28) renders at about 12px. */
+  const coverPortrait = rows => {
+    const PW = 900, PH = 1500;
+    const receipt = `<g class="a slide" style="--d:0;--sy:40px"><g class="lift"><g transform="translate(450 930) rotate(-2)">
+      <path d="M-330 -400 H330 V380 ${Array.from({ length: 22 }, (_, i) => `l-30 ${i % 2 ? -18 : 18}`).join(" ")} Z" fill="#FBF8F1" stroke="#D6CCBA" stroke-width="2" filter="url(#soft)"/>
+      <text class="t-mono" x="0" y="-330" font-size="36" text-anchor="middle">RECEIPT</text>
+      <text class="t-small" x="0" y="-284" font-size="28" text-anchor="middle">ORDER PLACED BY AI AGENT</text>
+      <path d="M-280 -250 H280" stroke="var(--ink)" stroke-width="2" stroke-dasharray="7 8"/>
+      ${rows.map((r, i) => `<g class="a" style="--d:${300 + i * 120}">
+        <text class="t-label" x="-280" y="${-170 + i * 80}" font-size="40">${r}</text>
+        <path d="M${-280 + r.length * 22 + 14} ${-180 + i * 80} H200" stroke="#BFB3A0" stroke-width="3" stroke-dasharray="2 10"/>
+        <text class="t-num" x="280" y="${-168 + i * 80}" font-size="50" text-anchor="end" style="fill:var(--copper)">?</text></g>`).join("")}
+      <path d="M-280 110 H280" stroke="var(--ink)" stroke-width="2" stroke-dasharray="7 8"/>
+      <text class="t-mono" x="-280" y="170" font-size="28">PAID BY</text>
+      <g transform="translate(140 200) rotate(-14)"><g class="a pop" style="--d:900">
+        <circle r="86" fill="none" stroke="var(--teal)" stroke-width="6"/><circle r="74" fill="none" stroke="var(--teal)" stroke-width="2"/>
+        <text class="t-mono" y="13" font-size="38" text-anchor="middle" style="fill:var(--teal);letter-spacing:.12em">AGENT</text></g></g>
+      <text class="t-mono cue" x="0" y="336" font-size="34" text-anchor="middle" style="opacity:1">TAP RECEIPT TO BEGIN</text>
+      <rect class="ring" x="-352" y="-422" width="704" height="846" rx="18" fill="none" stroke="var(--teal)" stroke-width="5"/>
+      </g></g></g>`;
+    return `<svg viewBox="0 0 ${PW} ${PH}" role="img" aria-label="Cover: Who gets paid when the customer is an agent?" xmlns="http://www.w3.org/2000/svg">
+      <rect width="${PW}" height="${PH}" fill="var(--paper)"/><rect width="${PW}" height="${PH}" filter="url(#grain)" opacity=".5"/>
+      <text class="t-mono a" style="--d:0" x="70" y="110" font-size="30">AGENT PAYMENTS · SEP 2026</text>
+      <text class="t-display a" style="--d:60" x="64" y="216" font-size="86">Who gets paid</text>
+      <text class="t-display a" style="--d:120" x="64" y="310" font-size="86">when the customer</text>
+      <text class="t-display a" style="--d:180" x="64" y="404" font-size="86">is an <tspan style="fill:var(--copper)">agent?</tspan></text>
+      <text class="t-small a" style="--d:260" x="70" y="466" font-size="32">Value, fees and trust in AI-agent commerce</text>
+      ${hit("s1", "Begin: open the receipt", receipt)}</svg>`;
   };
 
   /* ---------- S1: everyone built a door ---------- */
@@ -167,7 +199,7 @@
       <path d="M200 ${base} H1330" stroke="var(--ink)" stroke-width="3"/>
       ${bars}
       ${note(110, 836, ["Accenture Consumer Pulse 2026 · 25,590 consumers · 16 countries (not Thailand)"], 900, "start", 16)}
-      ${note(110, 864, ["Other surveys vary widely by question, e.g. Worldpay Agentic Commerce Report: 45% ready to let an agent complete a purchase"], 950, "start", 15)}
+      ${note(110, 864, ["Other surveys vary widely by question, e.g. Worldpay Agentic Commerce Report (2025): 45% ready to let an agent complete a purchase"], 950, "start", 15)}
       <g class="a" style="--d:1000"><rect x="1310" y="370" width="270" height="136" rx="8" fill="#FBF8F1" stroke="var(--ink)" stroke-width="1.5"/>
         <text class="t-mono" x="1330" y="402" font-size="15">US · GARTNER · JAN 2026</text>
         <text class="t-num" x="1328" y="454" font-size="44" style="fill:var(--copper)">≤11%</text>
@@ -296,7 +328,7 @@
       <text class="t-label a" style="--d:450" x="1430" y="742" font-size="18" text-anchor="middle">Merchants</text>
       ${gate}
       ${plate(py(4), "Mastercard & Amex among 60+ launch collaborators", "Google AP2 · Sep 2025 · not part of Visa’s Connect pilot", 450)}
-      ${plate(py(5), "Visa, Mastercard, Amex expressed support for the x402 Foundation", "not a payment route · x402 payments mainly in USDC stablecoin today", 500)}
+      ${plate(py(5), "Visa, Mastercard, Amex expressed support for the x402 Foundation", "card networks aren’t in the payment path · x402 pays mainly in USDC today", 500)}
       ${note(320, 810, ["Solid pipe: plugged into Visa’s Connect pilot (Apr 2026). Dashed: launch collaborator (AP2) or expressed support (x402) only.", "Drawn from announcements, not transaction data."], 550, "start", 15)}`,
       "How new agent-payment protocols connect to card networks");
   };
