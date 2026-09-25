@@ -21,11 +21,11 @@
     stage.appendChild(d); els[id] = d;
   });
 
-  let current = "cover", locked = false, timer = null, lastLock = 0;
+  let current = "cover", locked = false, timer = null, lastLock = 0, seq = 0;
 
   function show(id, animate) {
     const prev = els[current], next = els[id];
-    clearTimeout(timer);
+    clearTimeout(timer); seq++;
     Object.values(els).forEach(e => { if (e !== prev && e !== next) e.className = "scene"; });
     if (!animate || prev === next) {
       prev.className = "scene"; next.className = "scene active";
@@ -37,10 +37,18 @@
     current = id;
     stage.dataset.current = id;
     lastLock = lockMs(next);
-    timer = setTimeout(() => {
+    const my = ++seq;
+    const finish = () => {
+      if (my !== seq) return; /* a reset happened meanwhile */
       prev.className = "scene";
       next.className = "scene active";
       locked = false; timer = null;
+    };
+    timer = setTimeout(() => {
+      /* if a slow device started the animations late, wait for them to settle (capped at 800 ms) */
+      const pending = next.getAnimations({ subtree: true }).filter(a => a.playState === "running" && !(window.CSSTransition && a instanceof CSSTransition));
+      if (!pending.length) return finish();
+      Promise.race([Promise.all(pending.map(a => a.finished.catch(() => {}))), new Promise(r => setTimeout(r, 800))]).then(finish);
     }, lastLock);
   }
 
@@ -59,7 +67,7 @@
   }
 
   function reset() {
-    clearTimeout(timer); timer = null;
+    clearTimeout(timer); timer = null; seq++;
     Object.values(els).forEach(e => { e.className = "scene"; });
     els.cover.className = "scene active";
     current = "cover"; locked = false;
