@@ -1,0 +1,70 @@
+@font-face { font-family: "Fraunces"; src: url("fonts/fraunces.woff2") format("woff2"); font-weight: 100 900; font-display: block; }
+@font-face { font-family: "Inter Tight"; src: url("fonts/intertight.woff2") format("woff2"); font-weight: 100 900; font-display: block; }
+:root {
+  --paper: #F2ECE1; --paper2: #E9E1D2; --ink: #1C2432; --ink2: #3C4658; --mute: #6E6A62;
+  --copper: #B25D22; --copper2: #D9924F; --teal: #1D6B66; --teal2: #CFE5E1; --verm: #B0402C; --line: #CFC4B1;
+  --dur: 900ms;
+}
+* { box-sizing: border-box; }
+html, body { margin: 0; height: 100%; background: #E7DFD0; overflow: hidden; }
+body { font-family: "Inter Tight", system-ui, sans-serif; color: var(--ink); -webkit-font-smoothing: antialiased; }
+#app { position: fixed; inset: 0; display: flex; align-items: center; justify-content: center; }
+.stage { position: relative; width: min(100vw, calc(100vh * 16 / 9)); aspect-ratio: 16 / 9; background: var(--paper); overflow: hidden;
+  box-shadow: 0 0 0 1px rgba(28,36,50,.06); }
+.scene { position: absolute; inset: 0; opacity: 0; visibility: hidden; pointer-events: none; }
+.scene svg { width: 100%; height: 100%; display: block; }
+.scene.active { opacity: 1; visibility: visible; pointer-events: auto; }
+.scene.entering { animation: sceneIn var(--dur) cubic-bezier(.2,.7,.2,1) both; }
+.scene.leaving { visibility: visible; animation: sceneOut calc(var(--dur) * .6) ease-in both; pointer-events: none; }
+@keyframes sceneIn { from { opacity: 0; transform: translateY(14px); } to { opacity: 1; transform: none; } }
+@keyframes sceneOut { from { opacity: 1; } to { opacity: 0; transform: translateY(-8px); } }
+
+/* text */
+.t-display { font-family: "Fraunces", Georgia, serif; font-weight: 600; fill: var(--ink); font-variation-settings: "opsz" 96, "SOFT" 30; }
+.t-head { font-family: "Fraunces", Georgia, serif; font-weight: 560; fill: var(--ink); font-variation-settings: "opsz" 72; }
+.t-label { font-family: "Inter Tight", sans-serif; font-weight: 600; fill: var(--ink); }
+.t-small { font-family: "Inter Tight", sans-serif; font-weight: 500; fill: var(--ink2); }
+.t-mono { font-family: "Inter Tight", sans-serif; font-weight: 600; letter-spacing: .08em; fill: var(--ink2); }
+.t-num { font-family: "Fraunces", Georgia, serif; font-weight: 650; font-variation-settings: "opsz" 96; }
+.wm { font-family: "Inter Tight", sans-serif; font-weight: 750; letter-spacing: -.01em; fill: var(--ink); }
+
+/* clickable scene objects */
+.hit { cursor: pointer; outline: none; }
+.hit .lift { transition: transform .25s ease, filter .25s ease; transform-box: fill-box; transform-origin: center; }
+.hit:hover .lift, .hit:focus-visible .lift { transform: translateY(-6px); filter: drop-shadow(0 10px 10px rgba(28,36,50,.18)); }
+.hit .ring { opacity: 0; transition: opacity .25s; }
+.hit:hover .ring, .hit:focus-visible .ring { opacity: 1; }
+.cue { opacity: .75; }
+
+/* element animation, only while scene active */
+.a { opacity: 0; }
+.scene.active .a { animation: aIn .7s cubic-bezier(.2,.7,.2,1) both; animation-delay: calc(var(--d, 0) * 1ms + 150ms); }
+.scene.active .a.pop { animation-name: aPop; }
+.scene.active .a.grow { animation-name: aGrow; transform-box: fill-box; transform-origin: bottom; }
+.scene.active .a.growx { animation-name: aGrowX; transform-box: fill-box; transform-origin: left; }
+.scene.active .a.drop { animation-name: aDrop; }
+.scene.active .a.slide { animation-name: aSlide; animation-duration: 1s; }
+.scene.active .a.draw { opacity: 1; stroke-dasharray: var(--len, 1200); stroke-dashoffset: var(--len, 1200); animation-name: aDraw; animation-duration: 1s; }
+@keyframes aIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: none; } }
+@keyframes aPop { from { opacity: 0; transform: scale(.6); } to { opacity: 1; transform: none; } }
+@keyframes aGrow { from { opacity: 1; transform: scaleY(0); } to { opacity: 1; transform: none; } }
+@keyframes aGrowX { from { opacity: 1; transform: scaleX(0); } to { opacity: 1; transform: none; } }
+@keyframes aDrop { from { opacity: 0; transform: translateY(-26px); } to { opacity: 1; transform: none; } }
+@keyframes aSlide { from { opacity: 1; transform: translate(var(--sx, 0), var(--sy, 0)); } to { opacity: 1; transform: none; } }
+@keyframes aDraw { to { stroke-dashoffset: 0; } }
+.pop, .grow, .growx { transform-box: fill-box; transform-origin: center; }
+
+#narrow-note { display: none; position: fixed; left: 0; right: 0; bottom: 18px; padding: 0 20px; text-align: center; line-height: 1.45; font: 500 14px "Inter Tight", sans-serif; color: #6E6A62; }
+@media (max-aspect-ratio: 4/3) { #narrow-note { display: block; } }
+
+@media (prefers-reduced-motion: reduce) {
+  :root { --dur: 160ms; }
+  .scene.entering { animation-name: fadeOnly; }
+  .scene.leaving { animation-name: fadeOut; }
+  .scene.active .a, .scene.active .a.pop, .scene.active .a.grow, .scene.active .a.growx, .scene.active .a.drop, .scene.active .a.slide { animation: none; opacity: 1; transform: none; }
+  .scene.active .a.draw { animation: none; stroke-dashoffset: 0; }
+  .hit .lift { transition: none; }
+  .hit:hover .lift, .hit:focus-visible .lift { transform: none; }
+}
+@keyframes fadeOnly { from { opacity: 0; } to { opacity: 1; } }
+@keyframes fadeOut { from { opacity: 1; } to { opacity: 0; } }
