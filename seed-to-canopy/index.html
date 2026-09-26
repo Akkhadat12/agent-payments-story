@@ -18,6 +18,7 @@
     .scene.active { opacity: 1; visibility: visible; z-index: 1; }
     .image { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center center; transform: scale(1.045); transition: transform 8s ease-out; user-select: none; -webkit-user-drag: none; }
     .scene.active .image { transform: scale(1); }
+    .cover .image { object-position: left center; }
     .scene:not(.cover)::after { content: ""; position: absolute; inset: 0; background: linear-gradient(90deg, rgba(2,18,12,.52) 0%, rgba(2,18,12,.13) 39%, transparent 66%), linear-gradient(0deg, rgba(2,18,12,.27), transparent 22%); pointer-events: none; }
     .caption { position: absolute; z-index: 2; top: clamp(42px, 10vh, 120px); left: clamp(30px, 7vw, 126px); color: var(--cream); font-size: clamp(52px, 8vw, 130px); font-weight: 400; letter-spacing: -.055em; line-height: .94; margin: 0; opacity: 0; transform: translateY(20px); transition: opacity 650ms ease 320ms, transform 750ms ease 320ms; text-shadow: 0 3px 35px rgba(0,0,0,.2); }
     .scene.active .caption { opacity: 1; transform: translateY(0); }
@@ -25,7 +26,7 @@
     .visually-hidden { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0; }
     @media (max-width: 700px) {
       .image { object-position: 64% center; }
-      .cover .image { object-position: 50% center; }
+      .cover .image { object-fit: contain; object-position: 50% center; }
       .caption { top: 10vh; left: 7vw; font-size: clamp(48px, 12vw, 76px); max-width: 80%; }
     }
     @media (prefers-reduced-motion: reduce) {
