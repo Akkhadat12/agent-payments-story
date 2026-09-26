@@ -7,6 +7,9 @@
   <meta name="description" content="A small interactive visual story: from seed to canopy.">
   <title>From Seed to Canopy</title>
   <link rel="preload" as="image" href="assets/cover.jpg">
+  <link rel="preload" as="image" href="assets/seed.jpg">
+  <link rel="preload" as="image" href="assets/sprout.jpg">
+  <link rel="preload" as="image" href="assets/canopy.jpg">
   <style>
     :root { color-scheme: dark; --cream: #f9edd2; --amber: #e5ad63; }
     * { box-sizing: border-box; }
@@ -55,7 +58,6 @@
           const active = i === current;
           scene.classList.toggle('active', active);
           scene.setAttribute('aria-hidden', String(!active));
-          scene.querySelectorAll('img').forEach(img => { img.loading = active ? 'eager' : 'lazy'; });
         });
         announcement.textContent = names[current];
       }
