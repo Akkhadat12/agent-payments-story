@@ -3,12 +3,13 @@
 - Repository: https://github.com/Akkhadat12/agent-payments-story
 - Branch: `research/agent-economy-2026-09-30`
 - Branch link: https://github.com/Akkhadat12/agent-payments-story/tree/research/agent-economy-2026-09-30
-- Stage: `PLANNING` — final publication readback in progress
+- Stage: `READY_FOR_BUILD` — documentation verified; explicit legacy-preservation exception LEG-01 remains a pre-build safety check
 - Gate 1: approved A consumer-agent purchasing + B production-input purchasing, with C authority, limits, trust and liability throughout
 - Gate 2: thesis 1 explicitly approved on 2026-09-30
 - Approved thesis: Agents are expanding from helping people decide to purchasing consumer goods and production inputs, but scaling depends as much on bounded delegation, spending control and verification of outcomes as on convenient payments
 - Publication: owner explicitly approved Drive under Content and Research/Story on the new public GitHub branch on 2026-09-30
-- Last verified base commit: `ab61555714ddf61f4744c6b50c67ded434ddfa48`, checked 2026-09-30 UTC; current artifact commit will be recorded after readback
+- Verified handoff artifact commit: [`bdf874a3f9c2d58c8d1bcde60b59eb21d3a708b0`](https://github.com/Akkhadat12/agent-payments-story/commit/bdf874a3f9c2d58c8d1bcde60b59eb21d3a708b0), read back 2026-09-30 UTC; subsequent status/verification-only commit records this readiness
+- Main/base remains `ab61555714ddf61f4744c6b50c67ded434ddfa48`; all legacy code/assets and unrelated demo blob IDs match the base
 - Reading pack: [01 MD](01_KNOWLEDGE_SUMMARY.md), [01 PDF](01_KNOWLEDGE_SUMMARY.pdf), [02 MD](02_RESEARCH_AND_ANALYSIS.md), [02 PDF](02_RESEARCH_AND_ANALYSIS.pdf)
 - Story: [03_STORY_STRUCTURE.md](03_STORY_STRUCTURE.md)
 - Thai script: [03A_NARRATION_SCRIPT](https://docs.google.com/document/d/1tjlO_rdYaBgW_E0yoKX0npM3uBPfVRGMOLgUJ88OsQI), native Google Doc
@@ -21,4 +22,5 @@
 - Legacy public site: https://akkhadat12.github.io/agent-payments-story/ (prior 2D assignment, never the current test target)
 - Preservation exception LEG-01: no old site code/assets removed; cleanup deferred pending verified hosting inspection before Build. Main and unrelated `seed-to-canopy/` remain intact. No production deployment trigger could be conclusively ruled out from available read-only evidence
 - Verification: [RESEARCH_VERIFICATION.md](RESEARCH_VERIFICATION.md)
-- Next actor/action: Research/Story — finish commit readback and set `READY_FOR_BUILD`; after that Owner initiates a separate Build assignment, which follows 04 on this branch. No website build or QA performed here
+- Open material research/script findings: none identified in completed checks; source-review scope remains limited as documented
+- Next actor/action: Owner starts a separate Web Build assignment with this exact branch. Build reads current README and 04 in full, verifies hosting/legacy safety LEG-01 before code changes, then records BUILDING. No website build, deployment or web QA performed here

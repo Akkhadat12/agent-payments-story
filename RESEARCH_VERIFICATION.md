@@ -52,3 +52,14 @@ No website `QA_PASS` or public 3D build is claimed. `READY_FOR_BUILD` means the 
 ## Legacy safety exception
 
 No old website code or assets were removed or changed. Main is preserved at its original commit; unrelated seed-to-canopy remains unchanged. Read-only checks found no tracked .github/.vercel configuration and no status checks on the base commit; Vercel returned no teams. Because this does not conclusively rule out external production hooks, legacy cleanup is deferred and labeled LEG-01 for the later builder to reconcile safely. This is an explicit exception to the master's early branch reset requirement, not a completed reset.
+
+## Completed publication readback
+
+Artifact commit: bdf874a3f9c2d58c8d1bcde60b59eb21d3a708b0, read back 30 September 2026 UTC. All seven current numbered files, README, status and selected references are present. Required relative links resolve, and README/status/04/05 contain the exact verified branch, Drive folder and native script links. Both accepted 06 formats and 07 report requirement are present in 04/05.
+
+Drive contains exactly the two current PDF mirrors and one current native speaking script. Both PDF mirrors were downloaded after the final update and compared byte-for-byte with the committed canonical content:
+
+- 01: 49,593 bytes, SHA-256 c80d20256d4e03fceb0d75ce67ef763b43f49458e2d05e8afc4db5534ccbfbd5, Git blob 3b7979c0dfe4440dc0d74c90a0d7899b0613618b
+- 02: 91,897 bytes, SHA-256 921cf4bd823abe7e13a0d4c4f09d7fd88e96bd2940989d529c8ab66ff1fef920, Git blob 41bb29f882bfbbac6af5b77a1c8d5aa62cf94f0f
+
+Owner access was confirmed from Drive ownership metadata; no sharing permissions were expanded. Library reading copies were replaced in place at their existing identities, version 1. Current main was independently read back at ab61555714ddf61f4744c6b50c67ded434ddfa48; every legacy code/asset and seed-to-canopy blob matches the base. The final status/verification-only commit records READY_FOR_BUILD and the disclosed LEG-01 pre-build safety check.
