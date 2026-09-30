@@ -1,0 +1,16 @@
+{
+  "source_url":"https://www.trmlabs.com/trm-tech-blog/whos-actually-paying-measuring-ai-agent-payments-onchain",
+  "publisher":"TRM Labs",
+  "publication_date":"2026-09-09",
+  "access_date":"2026-09-30",
+  "measurement_start":"2025-05",
+  "measurement_end":"Not specified precisely on source page; snapshot before publication",
+  "coverage":"Known x402 facilitators on Base, Solana, Polygon",
+  "raw_settled_value_usd_rounded":52700000,
+  "raw_settlement_transactions_rounded":198900000,
+  "screened_commerce_value_usd":25620000,
+  "agent_like_share_of_screened_value_percent":[0.6,7.5],
+  "range_type":"Two heuristic model definitions; not a statistical confidence interval",
+  "filters":"Self-payments, concentrated bulk flows, sellers with fewer than ten distinct buyers excluded",
+  "limitations":["Agent decision-making cannot be read directly from chain records","Single-purpose agents may be undercounted","Screening may exclude legitimate concentrated B2B flows","Not global agent-commerce market share","No causal or future-market forecast"]
+}

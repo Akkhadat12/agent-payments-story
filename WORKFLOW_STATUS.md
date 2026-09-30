@@ -1,0 +1,24 @@
+# Workflow status
+
+- Repository: https://github.com/Akkhadat12/agent-payments-story
+- Branch: `research/agent-economy-2026-09-30`
+- Branch link: https://github.com/Akkhadat12/agent-payments-story/tree/research/agent-economy-2026-09-30
+- Stage: `PLANNING` — final publication readback in progress
+- Gate 1: approved A consumer-agent purchasing + B production-input purchasing, with C authority, limits, trust and liability throughout
+- Gate 2: thesis 1 explicitly approved on 2026-09-30
+- Approved thesis: Agents are expanding from helping people decide to purchasing consumer goods and production inputs, but scaling depends as much on bounded delegation, spending control and verification of outcomes as on convenient payments
+- Publication: owner explicitly approved Drive under Content and Research/Story on the new public GitHub branch on 2026-09-30
+- Last verified base commit: `ab61555714ddf61f4744c6b50c67ded434ddfa48`, checked 2026-09-30 UTC; current artifact commit will be recorded after readback
+- Reading pack: [01 MD](01_KNOWLEDGE_SUMMARY.md), [01 PDF](01_KNOWLEDGE_SUMMARY.pdf), [02 MD](02_RESEARCH_AND_ANALYSIS.md), [02 PDF](02_RESEARCH_AND_ANALYSIS.pdf)
+- Story: [03_STORY_STRUCTURE.md](03_STORY_STRUCTURE.md)
+- Thai script: [03A_NARRATION_SCRIPT](https://docs.google.com/document/d/1tjlO_rdYaBgW_E0yoKX0npM3uBPfVRGMOLgUJ88OsQI), native Google Doc
+- Build brief: [04_BUILD_WEB.md](04_BUILD_WEB.md)
+- QA plan: [05_QA.md](05_QA.md)
+- Owner folder: https://drive.google.com/drive/folders/1zn9OOvbbDFCXQeYLbgWeQW0CBjglDrwZ
+- Drive mirrors: [01 PDF](https://drive.google.com/file/d/1heAYpAuv9h477h1Ti7InbAPAWGLPYc43/view), [02 PDF](https://drive.google.com/file/d/1CNxgfy_U81Bm_lPD3H7u0YfqPcCm2GJE/view)
+- Current public build URL for this assignment: none
+- BUILD_NOTES.md, 06_SCENE_RATIONALE and 07_WEB_QA_REPORT.md: not yet created; required from later Build/QA
+- Legacy public site: https://akkhadat12.github.io/agent-payments-story/ (prior 2D assignment, never the current test target)
+- Preservation exception LEG-01: no old site code/assets removed; cleanup deferred pending verified hosting inspection before Build. Main and unrelated `seed-to-canopy/` remain intact. No production deployment trigger could be conclusively ruled out from available read-only evidence
+- Verification: [RESEARCH_VERIFICATION.md](RESEARCH_VERIFICATION.md)
+- Next actor/action: Research/Story — finish commit readback and set `READY_FOR_BUILD`; after that Owner initiates a separate Build assignment, which follows 04 on this branch. No website build or QA performed here
