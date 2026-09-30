@@ -4,6 +4,12 @@
 
 The owner explicitly changed the final host to a public GPT Sites website. This substitutes hosting only. The approved thesis, nine scenes, prototype/palette gate, visual/interactions, public-access requirement, Drive rationale, independent QA and fix/retest contract remain unchanged. The public URL and published source revision identify the delivered website.
 
+## Owner motion correction — 30 September 2026
+
+The owner found thrown/courier objects and long cross-screen flights confusing and unattractive. Remove cloned traveling objects, camera arcs and inter-station journeys. Use a short dissolve, then only a restrained local camera settle in the destination composition. Reveal destination labels after its camera has settled. The final treatment uses 820ms total and at most a 2.5% local camera-distance offset; no geometry is thrown or transferred. This replaces the original travel direction while preserving genuine perspective, meaningful targets, nine scenes, reduced-motion cuts and indefinite holds.
+
+S06 adds the source metadata `TRM · known x402 facilitators` (five words, excluding the separator) as an explicit exception to the authored argument-copy budget. The narration qualifies Base, Solana and Polygon coverage from May 2025, publication 9 September 2026, and the unspecified measurement end date. Numeric sets and the screened denominator remain unchanged.
+
 ## Start with the verified status
 
 Read [WORKFLOW_STATUS](WORKFLOW_STATUS.md) before editing. This is a future Build instruction, not permission for Research/Story to build. The owner starts the later Build assignment. If status is `PLANNING` or `BLOCKED`, follow the exact dependency there before starting. Do not infer readiness from the presence of this file.
@@ -54,35 +60,35 @@ Each target must be understandable as a subject in the argument, not a disguised
 
 ### S00 to S01
 
-Understand: money can be delegated, but permission has boundaries. Target: the recognizable shoe. Action: click shoe/Space enters S01. Why next: ground the abstract question in a purchase anyone can understand. Travel: approach the shoe and reveal its bounded total-budget relationship. Landing: one unbranded shoe inside the illustrative authorization; readable until advanced. Copy: `When AI Spends for Us` plus optional `THB 3,000`, at most 9 words.
+Understand: money can be delegated, but permission has boundaries. Target: the recognizable shoe. Action: click shoe/Space enters S01. Why next: ground the abstract question in a purchase anyone can understand. Transition: brief dissolve to the next scene, restrained local camera settle, then label reveal. Landing: one unbranded shoe inside the illustrative authorization; readable until advanced. Copy: `When AI Spends for Us` plus optional `THB 3,000`, at most 9 words.
 
 ### S01 to S02
 
-Understand: a correct purchase needs more than a price ceiling. Target: the authorization boundary surrounding the shoe. Click/Space enters S02. Why next: ask how the conditions become permission that can be enforced. Travel: follow the boundary into distinct intent/permission/payment functions. Landing: all three roles and their order visible without a diagram that claims a universal official architecture. Copy: `Total ≤ THB 3,000`, `Fit`, `Delivery`, `Returns`, `Illustrative`; 10 words maximum.
+Understand: a correct purchase needs more than a price ceiling. Target: the authorization boundary surrounding the shoe. Click/Space enters S02. Why next: ask how the conditions become permission that can be enforced. Transition: brief dissolve to the next scene, restrained local camera settle, then label reveal. Landing: all three roles and their order visible without a diagram that claims a universal official architecture. Copy: `Total ≤ THB 3,000`, `Fit`, `Delivery`, `Returns`, `Illustrative`; 10 words maximum.
 
 ### S02 to S03
 
-Understand: decision authority and payment execution differ. Target: the approved payment record at the output of the permission check. Click/Space enters S03. Why next: connect the model to real commerce offerings. Travel: follow the authorized record to a fork in checkout paths. Landing: two paths coexist, with the authentic dated product illustration. Copy: `Intent`, `Permission`, `Payment`, `Who`, `What`, `Limit`, `Until`; 8 words maximum.
+Understand: decision authority and payment execution differ. Target: the approved payment record at the output of the permission check. Click/Space enters S03. Why next: connect the model to real commerce offerings. Transition: brief dissolve to the next scene, restrained local camera settle, then label reveal. Landing: two paths coexist, with the authentic dated product illustration. Copy: `Intent`, `Permission`, `Payment`, `Who`, `What`, `Limit`, `Until`; 8 words maximum.
 
 ### S03 to S04
 
-Understand: present products can keep merchants and human approval involved. Target: a conceptual purchase receipt beside the authentic artifact, visually connected to the checkout output. Click/Space enters S04. Why next: a receipt may represent a tool bought by software, not just goods bought for a person. Travel: follow the receipt into a task being produced; reveal data/browser inputs. Landing: a software task receives separately metered capabilities. Copy: `In context`, `Merchant checkout`, `Published May 2026`; 10 authored words maximum. Documentary source-image text is a justified exception; do not add explanatory paragraphs.
+Understand: present products can keep merchants and human approval involved. Target: a conceptual purchase receipt beside the authentic artifact, visually connected to the checkout output. Click/Space enters S04. Why next: a receipt may represent a tool bought by software, not just goods bought for a person. Transition: brief dissolve to the next scene, restrained local camera settle, then label reveal. Landing: a software task receives separately metered capabilities. Copy: `In context`, `Merchant checkout`, `Published May 2026`; 10 authored words maximum. Documentary source-image text is a justified exception; do not add explanatory paragraphs.
 
 ### S04 to S05
 
-Understand: services can be acquired as inputs while a task proceeds. Target: the assembling task output. Click/Space enters S05. Why next: evaluate whether all those purchases deliver economical work. Travel: move from separate service inputs to their task-cost accumulation and output quality check. Landing: data cost is distinct from inference/retry/review, with no invented amounts. Copy: `Data`, `Browser`, `Tools`, `Published prices`, `$0.10/query`, `$0.12/hour`, `30 Sep 2026`; at most 12 words excluding indispensable numeric units.
+Understand: services can be acquired as inputs while a task proceeds. Target: the assembling task output. Click/Space enters S05. Why next: evaluate whether all those purchases deliver economical work. Transition: brief dissolve to the next scene, restrained local camera settle, then label reveal. Landing: data cost is distinct from inference/retry/review, with no invented amounts. Copy: `Data`, `Browser`, `Tools`, `Published prices`, `$0.10/query`, `$0.12/hour`, `30 Sep 2026`; at most 12 words excluding indispensable numeric units.
 
 ### S05 to S06
 
-Understand: low unit price is not proof of a low-cost successful task. Target: the accumulated purchase record, not an arbitrary arrow. Click/Space enters S06. Why next: the same counting problem matters at market scale. Travel: widen from one illustrative job to the research's measured sets. Landing: a denominator-labeled filter with uncertainty remains visible. Copy: `Illustrative`, `10 × $0.10 = $1`, `Data only`, `Inference`, `Retries`, `Review`, `Useful result`; at most 12 authored words plus arithmetic.
+Understand: low unit price is not proof of a low-cost successful task. Target: the accumulated purchase record, not an arbitrary arrow. Click/Space enters S06. Why next: the same counting problem matters at market scale. Transition: brief dissolve to the next scene, restrained local camera settle, then label reveal. Landing: a denominator-labeled filter with uncertainty remains visible. Copy: `Illustrative`, `10 × $0.10 = $1`, `Data only`, `Inference`, `Retries`, `Review`, `Useful result`; at most 12 authored words plus arithmetic.
 
 ### S06 to S07
 
-Understand: traffic on a payment protocol does not identify autonomous decision-making. Target: the unresolved attribution/verification boundary within the evidence filter. Click/Space enters S07. Why next: move from what the data cannot tell us to what a trustworthy purchase must check. Travel: leave the aggregate view and follow one conceptual transaction across permission, payment and delivery. Landing: an undelivered result remains unresolved rather than falsely complete. Copy: `Observed`, `Screened`, `Agent-like estimate`, `0.6–7.5% of screened value`, `Not ground truth`; at most 12 authored words excluding units/date/numbers.
+Understand: traffic on a payment protocol does not identify autonomous decision-making. Target: the unresolved attribution/verification boundary within the evidence filter. Click/Space enters S07. Why next: move from what the data cannot tell us to what a trustworthy purchase must check. Transition: brief dissolve to the next scene, restrained local camera settle, then label reveal. Landing: an undelivered result remains unresolved rather than falsely complete. Copy: `Observed`, `Screened`, `Agent-like estimate`, `0.6–7.5% of screened value`, `Not ground truth`; at most 12 authored words excluding units/date/numbers.
 
 ### S07 to S08
 
-Understand: authorization, payment, fulfillment and recovery are different success conditions. Target: the outcome checkpoint controlled by the owner. Click/Space enters S08. Why next: formulate the practical conclusion across A and B. Travel: widen to the consumer purchase and tool-supported work, both linked to bounded permission and outcome. Landing: the two cases are recognizable, with a clear conditional conclusion. Copy: `Authorized`, `Paid`, `Delivered?`, `Review`, `Stop`, `Resolve`; 10 words maximum.
+Understand: authorization, payment, fulfillment and recovery are different success conditions. Target: the outcome checkpoint controlled by the owner. Click/Space enters S08. Why next: formulate the practical conclusion across A and B. Transition: brief dissolve to the next scene, restrained local camera settle, then label reveal. Landing: the two cases are recognizable, with a clear conditional conclusion. Copy: `Authorized`, `Paid`, `Delivered?`, `Review`, `Stop`, `Resolve`; 10 words maximum.
 
 ### S08 to S00
 
@@ -108,15 +114,7 @@ Across the sequence, move from concrete purchase, to functional permission, to r
 
 All movement has a narrative purpose and then settles. Exact easing, duration, camera speed and object mechanics are Build decisions tested in-browser. No continuous decorative animation or automatic scene advancement.
 
-- **S00:** brief subject-relevant arrival into the shoe/authorization focal composition; then a completely stable cover
-- **S01:** approach reveals conditions that were not visible at the cover; hold the complete budget relationship
-- **S02:** a controlled spatial separation makes the three roles distinguishable; any traveling record stops at its correct permission boundary
-- **S03:** camera follows the authorized purchase into the two checkout destinations; source artifact lands upright/readable with all motion stopped
-- **S04:** the receipt becomes a purchase of a service input through spatial continuity; inputs enter a task only after a depicted permission/payment step. No endless conveyor animation during narration
-- **S05:** accumulation reveals why task cost exceeds one item price; quality checkpoint settles without pulsing
-- **S06:** zoom out changes the level of analysis; filters reveal source sets and uncertainty in controlled sequence, then hold. No rapidly counting totals or future extrapolation
-- **S07:** focus one transaction; payment can settle while delivery remains unresolved. Stop the animation at that distinction so the presenter can explain it
-- **S08:** widening reframe connects both cases to owner control and outcome; stable concluding view until click/Space/R
+The same calm transition grammar serves each adjacent pair. Outgoing geometry and words fade in place; switch scenes only at zero opacity. Incoming geometry appears with a small local dolly, settles, and then its labels become visible. The click subject never becomes a courier. The change of relationship between scenes carries the explanation. Every settled state is completely stable.
 
 With `prefers-reduced-motion`, preserve destinations, critical relationships and the same controls through short/simple transitions or cuts. Motion cannot be the only carrier of a fact. R during animation must cancel or safely finish the current operation and reliably land on cover.
 

@@ -28,7 +28,7 @@ Click the scene's meaningful object or press Space to advance. R returns to cove
 
 Reviewer-only URL options: `capture=1920`, `capture=1600`, `capture=1280` for exact logical 16:9 frame renders; `motion=reduce` for cuts through the same reduced-motion path; `titles=hidden` for the cover/conclusion title-hidden check. The ordinary website has no verification controls on its stage.
 
-Final screenshots: `build-evidence/S00-1920.png` through `S08-1920.png`, plus 1280 frames and transition captures. Six controller tests and the production build pass. Independent QA owns the later 07_WEB_QA_REPORT.md and acceptance result; no self-signoff is claimed.
+Final screenshots: `build-evidence/S00-1920.png` through `S08-1920.png`, plus 1280 frames and transition captures. Twelve controller/motion tests and the production build pass. Independent QA owns the later 07_WEB_QA_REPORT.md and acceptance result; no self-signoff is claimed.
 
 ## Legacy preservation
 

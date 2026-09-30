@@ -8,7 +8,13 @@ Owner approved thesis 1 on 30 September 2026, with production-input examples fro
 
 Audience: general Thai viewers interested in technology and business. Research cutoff: 30 September 2026. Spoken language: Thai. Website text: minimal English. This file defines content and relationships, not final artwork, palette or precise camera choreography.
 
-Read [status](WORKFLOW_STATUS.md), [knowledge](01_KNOWLEDGE_SUMMARY.md), [research and claims](02_RESEARCH_AND_ANALYSIS.md), [Build brief](04_BUILD_WEB.md), [QA plan](05_QA.md). Thai narration: [03A_NARRATION_SCRIPT](https://docs.google.com/document/d/1tjlO_rdYaBgW_E0yoKX0npM3uBPfVRGMOLgUJ88OsQI), a verified native Google Doc in the assignment folder.
+Read [status](WORKFLOW_STATUS.md), [knowledge](01_KNOWLEDGE_SUMMARY.md), [research and claims](02_RESEARCH_AND_ANALYSIS.md), [Build brief](04_BUILD_WEB.md), [QA plan](05_QA.md). Thai narration: [03A_NARRATION_SCRIPT](03A_NARRATION_SCRIPT.md), the public reading copy of the verified native document.
+
+## Owner motion correction — 30 September 2026
+
+The owner found cross-screen thrown objects confusing and unattractive. The final direction removes courier/cloned objects, camera arcs and long flights through blank space. Each meaningful-object activation opens the next scene through a brief dissolve and a restrained local camera settle. Show the destination geometry clearly before its labels. Narrative continuity comes from the scene relationships and presenter, not a moving token. This supersedes the travel/zoom choreography proposed below while preserving all nine destinations, controls, claims and stable holds.
+
+S06 source-context correction: the measurement concerns TRM-known x402 facilitators on Base, Solana and Polygon from May 2025; the article was published 9 September 2026 and gives no exact measurement end date. The full Thai narration includes this qualification. Source metadata on stage is a documented copy-budget exception.
 
 ## Arc and human relevance
 
@@ -48,7 +54,7 @@ This includes natural pauses and presenter-triggered transitions. The script con
 
 - Time: 65 seconds
 - Main idea: Intent, enforceable authorization and payment execution are separate jobs
-- Spatial relationship: three connected but spatially distinct work areas: intent, permission, settlement. A conceptual authorization record travels only after passing the bounded control stage
+- Spatial relationship: three connected but spatially distinct work areas: intent, permission, settlement. A conceptual authorization record is shown only at the permitted output of the bounded control stage
 - Evidence: C04/C13; [AP2](https://cloud.google.com/blog/products/ai-machine-learning/announcing-agents-to-payments-ap2-protocol), [IMF Note](https://www.imf.org/-/media/files/publications/imf-notes/2026/english/insea2026004.pdf)
 - Talking points: mandates record permission; outside-the-model checks constrain execution; signing is not proof of product quality or settled legal liability
 - Copy budget: 8 words: `Intent`, `Permission`, `Payment`, `Who`, `What`, `Limit`, `Until`

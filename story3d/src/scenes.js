@@ -32,7 +32,7 @@ export function buildScenes(f){
   const gate=new T.Group();gate.position.set(-.1,1.1,0);gate.add(f.box(2.55,.13,1.6,'surface',[0,-.65,0]));for(const x of [-1.12,1.12])gate.add(f.box(.10,2.25,.1,'accent',[x,.4,0]));gate.add(f.box(2.3,.1,.1,'accent',[0,1.52,0]));
   for(let j=0;j<4;j++)gate.add(f.box(1.0,.45,.06,'dark',[-.7+(j%2)*1.35,.95-Math.floor(j/2)*.67,.1]));s2.group.add(gate);
   const payment=f.paper([3.7,1.1,-.55],.70);s2.group.add(payment);s2.target=payment;
-  s2.group.add(f.line([[-2.65,.45,.5],[-1.4,.45,0]],'line',.03),f.line([[1.25,.45,0],[2.5,.45,-.55],[3.7,.45,-.55]],'accent',.035));
+  s2.group.add(f.line([[-2.85,.70,.5],[-2.25,.70,.5],[-1.225,.48,0]],'line',.03),f.line([[1.25,.45,0],[2.5,.45,-.55],[3.7,.45,-.55]],'accent',.035));
   label(s2,'Intent',[-3.8,2.6,.5]);label(s2,'Permission',[-.1,3.16,0]);label(s2,'Payment',[3.7,2.65,-.55]);
   for(const [text,x,y] of [['Who',-.8,2.1],['What',.6,2.1],['Limit',-.8,1.44],['Until',.6,1.44]])label(s2,text,[x,y,.25],'quiet');
 
@@ -60,6 +60,7 @@ export function buildScenes(f){
   label(s6,'Observed',[-4.9,2.65,-1.3]);label(s6,'$52.7m',[2.65,2.65,-1.3],'accent');label(s6,'Screened',[-4.9,1.27,.15]);label(s6,'$25.62m',[-.05,1.27,.15],'accent');
   const attribution=new T.Group();attribution.position.set(4.4,1.55,1.2);attribution.add(f.ring(1.11,[0,0,0]));for(let j=0;j<3;j++)attribution.add(f.box(.08,.12,.07,'accent',[0,.5-j*.35,.07]));s6.group.add(attribution);s6.target=attribution;
   s6.group.add(f.line([[-.8,.42,0],[.3,.42,.7],[3.29,.42,1.2]],'line',.027));
+  label(s6,'TRM · known x402 facilitators',[-.8,3.45,-1.3],'quiet');
   label(s6,'Agent-like estimate',[1.45,5.20,0]);label(s6,'0.6–7.5% of screened value',[1.45,4.65,0],'large');label(s6,'Not ground truth',[1.45,4.04,0],'quiet');
 
   const s7=make(7,[4.1,4.7,13.5],[0,1.35,0]);
