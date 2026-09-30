@@ -1,26 +1,19 @@
 # Workflow status
 
 - Repository: https://github.com/Akkhadat12/agent-payments-story
-- Branch: `research/agent-economy-2026-09-30`
-- Branch link: https://github.com/Akkhadat12/agent-payments-story/tree/research/agent-economy-2026-09-30
-- Stage: `READY_FOR_BUILD` — documentation verified; explicit legacy-preservation exception LEG-01 remains a pre-build safety check
-- Gate 1: approved A consumer-agent purchasing + B production-input purchasing, with C authority, limits, trust and liability throughout
-- Gate 2: thesis 1 explicitly approved on 2026-09-30
-- Approved thesis: Agents are expanding from helping people decide to purchasing consumer goods and production inputs, but scaling depends as much on bounded delegation, spending control and verification of outcomes as on convenient payments
-- Publication: owner explicitly approved Drive under Content and Research/Story on the new public GitHub branch on 2026-09-30
-- Verified handoff artifact commit: [`bdf874a3f9c2d58c8d1bcde60b59eb21d3a708b0`](https://github.com/Akkhadat12/agent-payments-story/commit/bdf874a3f9c2d58c8d1bcde60b59eb21d3a708b0), read back 2026-09-30 UTC; subsequent status/verification-only commit records this readiness
-- Main/base remains `ab61555714ddf61f4744c6b50c67ded434ddfa48`; all legacy code/assets and unrelated demo blob IDs match the base
-- Reading pack: [01 MD](01_KNOWLEDGE_SUMMARY.md), [01 PDF](01_KNOWLEDGE_SUMMARY.pdf), [02 MD](02_RESEARCH_AND_ANALYSIS.md), [02 PDF](02_RESEARCH_AND_ANALYSIS.pdf)
-- Story: [03_STORY_STRUCTURE.md](03_STORY_STRUCTURE.md)
-- Thai script: [03A_NARRATION_SCRIPT](https://docs.google.com/document/d/1tjlO_rdYaBgW_E0yoKX0npM3uBPfVRGMOLgUJ88OsQI), native Google Doc
-- Build brief: [04_BUILD_WEB.md](04_BUILD_WEB.md)
-- QA plan: [05_QA.md](05_QA.md)
-- Owner folder: https://drive.google.com/drive/folders/1zn9OOvbbDFCXQeYLbgWeQW0CBjglDrwZ
-- Drive mirrors: [01 PDF](https://drive.google.com/file/d/1heAYpAuv9h477h1Ti7InbAPAWGLPYc43/view), [02 PDF](https://drive.google.com/file/d/1CNxgfy_U81Bm_lPD3H7u0YfqPcCm2GJE/view)
-- Current public build URL for this assignment: none
-- BUILD_NOTES.md, 06_SCENE_RATIONALE and 07_WEB_QA_REPORT.md: not yet created; required from later Build/QA
-- Legacy public site: https://akkhadat12.github.io/agent-payments-story/ (prior 2D assignment, never the current test target)
-- Preservation exception LEG-01: no old site code/assets removed; cleanup deferred pending verified hosting inspection before Build. Main and unrelated `seed-to-canopy/` remain intact. No production deployment trigger could be conclusively ruled out from available read-only evidence
-- Verification: [RESEARCH_VERIFICATION.md](RESEARCH_VERIFICATION.md)
-- Open material research/script findings: none identified in completed checks; source-review scope remains limited as documented
-- Next actor/action: Owner starts a separate Web Build assignment with this exact branch. Build reads current README and 04 in full, verifies hosting/legacy safety LEG-01 before code changes, then records BUILDING. No website build, deployment or web QA performed here
+- Branch: research/agent-economy-2026-09-30
+- Stage: READY_FOR_QA — public website, rationale and repository source mirror delivered; independent review pending
+- Public website: https://when-ai-spends-for-us.akkhadet12.chatgpt.site
+- Published source revision: 09d0673075c72dfbac057b4c621e6770ff427d90
+- Owner hosting override: public GPT Sites, approved 30 September 2026; all other Build/QA requirements retained
+- Approved thesis: agent purchasing expands across consumer goods and production inputs, conditional on bounded authority, budget control and verified outcomes
+- Application: story3d/, nine states S00–S08, Thai narration plan 570 seconds
+- Build results: six controller tests and production build pass; final public keyboard/mouse routes, reset, rapid input, reduced-motion path and 1920/1280 frames checked
+- Renderer acceptance scope: tested software3D default; optional WebGL experimental/unverified
+- Build notes: BUILD_NOTES.md
+- Full narration: 03A_NARRATION_SCRIPT.md
+- Thai scene rationale: 06_SCENE_RATIONALE.md; owner-held editable document delivered separately
+- Final evidence: build-evidence/; all final scene frames and representative transitions
+- Independent QA: 07_WEB_QA_REPORT.md not yet produced; no independent pass claimed
+- Preservation: main, legacy root code/assets and unrelated seed-to-canopy unchanged. Legacy cleanup exception retained; new application isolated
+- Next: independent QA tests this published source and owns pass/fail/fix/retest

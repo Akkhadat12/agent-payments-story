@@ -1,5 +1,9 @@
 # Build brief for When an AI Spends for Us
 
+## Owner hosting override — 30 September 2026
+
+The owner explicitly changed the final host to a public GPT Sites website. This substitutes hosting only. The approved thesis, nine scenes, prototype/palette gate, visual/interactions, public-access requirement, Drive rationale, independent QA and fix/retest contract remain unchanged. The public URL and published source revision identify the delivered website.
+
 ## Start with the verified status
 
 Read [WORKFLOW_STATUS](WORKFLOW_STATUS.md) before editing. This is a future Build instruction, not permission for Research/Story to build. The owner starts the later Build assignment. If status is `PLANNING` or `BLOCKED`, follow the exact dependency there before starting. Do not infer readiness from the presence of this file.
@@ -10,11 +14,11 @@ Working branch: `research/agent-economy-2026-09-30`
 
 Exact branch: https://github.com/Akkhadat12/agent-payments-story/tree/research/agent-economy-2026-09-30
 
-Owner reading and post-build documents: https://drive.google.com/drive/folders/1zn9OOvbbDFCXQeYLbgWeQW0CBjglDrwZ
+Owner reading and post-build editable documents are delivered separately; public reading equivalents are included in this repository.
 
 Read in full: [03 story](03_STORY_STRUCTURE.md), [02 analysis](02_RESEARCH_AND_ANALYSIS.md), [02 PDF](02_RESEARCH_AND_ANALYSIS.pdf), [01 summary](01_KNOWLEDGE_SUMMARY.md), [01 PDF](01_KNOWLEDGE_SUMMARY.pdf), [05 QA](05_QA.md), [reference provenance](references/README.md). Use the current branch's research, not a historical commit or Drive draft.
 
-Thai speaking script: [03A_NARRATION_SCRIPT](https://docs.google.com/document/d/1tjlO_rdYaBgW_E0yoKX0npM3uBPfVRGMOLgUJ88OsQI), native Google Doc. Read the full current script before building. Its scene IDs, factual wording and cues were verified after import.
+Thai speaking script: [03A_NARRATION_SCRIPT](03A_NARRATION_SCRIPT.md), a public reading copy of the verified native document. Read the full current script before building. Its scene IDs, factual wording and cues were verified after import.
 
 ## Owner requirements and approved thesis
 
@@ -150,7 +154,7 @@ Make meaningful targets keyboard-operable with accessible names. Provide visible
 
 Preserve numbered research documents. Add website source and BUILD_NOTES.md on the same exact branch. The root's existing 2D source is legacy, not this brief. Do not edit main, delete unrelated `seed-to-canopy/`, erase history or force-push. Research-stage legacy cleanup was deliberately deferred; reconcile old root website files before building and record exact removal/replacement on this working branch. Inspect actual hosting/project connections before changes.
 
-Deploy the finished app to **Vercel at a public production URL that opens without login**, not just localhost, a temporary/private preview, or the old GitHub Pages site. Inspect the Vercel project's configured production branch. A push to this branch may create only a preview; use the supported production-deployment path and verify that the returned URL serves the new commit. If connection/permission is missing, record the concrete blocker and next action. Do not invent deployment success.
+Deploy the finished app to **GPT Sites at a public production URL that opens without login**, not just localhost, a temporary/private preview, or the old GitHub Pages site. Save the finished source revision and deploy that saved version through the supported GPT Sites publishing workflow. Verify the returned public URL and source revision; a source push or private preview alone does not establish publication. If connection/permission is missing, record the concrete blocker and next action. Do not invent deployment success.
 
 After final Build, create **one current Thai scene-rationale document** in the linked Drive folder: either a native Google Doc titled **06_SCENE_RATIONALE** or a Word file named **06_SCENE_RATIONALE.docx**. Return its exact verified link alongside the public URL. It must describe the finished public cover, each content scene and ending in actual order; include settled screenshots, what to understand, why this order, final visual/interaction reasoning, sources/caveats and material departures from the plan. Include approved thesis, public URL, date and navigation explanation. One reading column, Thai fonts, legible screenshots/captions and working links; open and verify the final document. A proposed scene list or MD alone does not satisfy this deliverable.
 

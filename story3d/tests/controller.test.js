@@ -1,0 +1,10 @@
+import {test} from 'node:test';import assert from 'node:assert/strict';import {Controller,ease} from '../src/controller.js';
+let queue=[];globalThis.requestAnimationFrame=fn=>{queue.push(fn);return queue.length};globalThis.cancelAnimationFrame=()=>{};
+function setup(reduced=false){queue=[];const events=[];const c=new Controller({duration:100,reduced,onStart:(a,b)=>events.push(['start',a,b]),onFrame:(a,b,t)=>events.push(['frame',a,b,t]),onSettle:i=>events.push(['settle',i])});return {c,events};}
+function finish(){const fn=queue.shift();fn(performance.now()+10000);}
+test('rapid advance is locked and only one destination settles',()=>{const {c,events}=setup();assert.equal(c.advance(),true);assert.equal(c.advance(),false);assert.equal(c.advance(),false);finish();assert.equal(c.index,1);assert.equal(c.moving,false);assert.deepEqual(events.filter(x=>x[0]==='settle'),[['settle',1]]);});
+test('R cancels the stale transition deterministically',()=>{const {c,events}=setup();c.advance();const stale=queue.shift();c.reset();stale(performance.now()+10000);assert.equal(c.index,0);assert.equal(c.moving,false);assert.deepEqual(events.filter(x=>x[0]==='settle'),[['settle',0]]);});
+test('all nine states hold and loop only after explicit advance',()=>{const {c}=setup();for(let i=1;i<=9;i++){assert.equal(c.moving,false);assert.equal(c.index,(i-1)%9);c.advance();finish();assert.equal(c.index,i%9)}assert.equal(c.index,0);assert.equal(queue.length,0)});
+test('reduced motion reaches the same destination with one frame',()=>{const {c,events}=setup(true);c.advance();finish();assert.deepEqual(events.filter(x=>x[0]==='frame'),[['frame',0,1,1]]);assert.equal(c.index,1)});
+test('reset from ending and cover is idempotent',()=>{const {c}=setup();c.index=8;c.reset();c.reset();assert.equal(c.index,0);assert.equal(c.moving,false)});
+test('easing preserves endpoint and monotonic travel',()=>{assert.equal(ease(0),0);assert.equal(ease(1),1);let last=0;for(let t=0;t<=1;t+=.01){assert.ok(ease(t)>=last);last=ease(t)}});
